@@ -9,15 +9,14 @@ public class Interactable : MonoBehaviour
     
     private PlayerManager _playerManager;
 
-    public void Interact()
-    {
-        Debug.Log($"Interact!");
-        _onInteract.Invoke(_playerManager);
-    }
-
     public void OnAim(PlayerManager playerManager)
     {
         _playerManager = playerManager;
         UIManager.Instance.SetCrosshair(CrosshairModes.Interact);
+    }
+    
+    public void OnInteract()
+    {
+        _onInteract.Invoke(_playerManager);
     }
 }

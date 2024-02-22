@@ -12,6 +12,8 @@ public class PlayerLook : MonoBehaviour
     [SerializeField] private float _maxInteractionDistance = 1.5f;
     
     private Interactable _interactable;
+    private Pickable _pickable;
+    
     private Transform _mainCameraTransform;
     private InputManager _inputManager;
     private PlayerManager _playerManager;
@@ -27,11 +29,17 @@ public class PlayerLook : MonoBehaviour
 
     private void Update()
     {
+        _playerHeadTransform.forward = _mainCameraTransform.forward;
+        
         if (Physics.Raycast(_playerHeadTransform.position, _mainCameraTransform.forward, out var hit, _maxInteractionDistance, _layerMask))
         {
             if (hit.transform.TryGetComponent<Interactable>(out _interactable))
             {
                 _interactable.OnAim(_playerManager);
+            }
+            else if (hit.transform.TryGetComponent<Pickable>(out _pickable))
+            {
+                _pickable.OnAim(_playerManager);
             }
             else
             {
@@ -46,6 +54,6 @@ public class PlayerLook : MonoBehaviour
 
     private void OnInteractAction(InputAction.CallbackContext context)
     {
-        _interactable?.Interact();
+        _interactable?.OnInteract();
     }
 }

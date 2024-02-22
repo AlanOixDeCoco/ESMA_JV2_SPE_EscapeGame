@@ -82,8 +82,8 @@ MonoBehaviour:
     m_InputAxisName: 
     m_InputAxisValue: 0
     m_InvertInput: 1
-    m_MinValue: -70
-    m_MaxValue: 70
+    m_MinValue: -85
+    m_MaxValue: 80
     m_Wrap: 0
     m_Recentering:
       m_enabled: 0

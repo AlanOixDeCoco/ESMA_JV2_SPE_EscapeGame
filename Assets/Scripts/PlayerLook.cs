@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PlayerManager))]
-public class PlayerLook : MonoBehaviour
+public class PlayerLook : PlayerComponent
 {
     [SerializeField] private LayerMask _layerMask;
     [SerializeField] private Transform _playerHeadTransform;
@@ -17,6 +17,8 @@ public class PlayerLook : MonoBehaviour
     private Transform _mainCameraTransform;
     private InputManager _inputManager;
     private PlayerManager _playerManager;
+
+    private bool _aimAtInteractable = false, _aimAtPickable = false;
 
     private void Start()
     {
@@ -30,23 +32,27 @@ public class PlayerLook : MonoBehaviour
     private void Update()
     {
         _playerHeadTransform.forward = _mainCameraTransform.forward;
-        
-        if (Physics.Raycast(_playerHeadTransform.position, _mainCameraTransform.forward, out var hit, _maxInteractionDistance, _layerMask))
+
+        _aimAtInteractable = false;
+        _aimAtPickable = false;
+
+        if (Physics.Raycast(_playerHeadTransform.position, _mainCameraTransform.forward, out var hit,
+                _maxInteractionDistance, _layerMask))
         {
-            if (hit.transform.TryGetComponent<Interactable>(out _interactable))
+            _aimAtInteractable = hit.transform.TryGetComponent<Interactable>(out _interactable);
+            if (_aimAtInteractable)
             {
                 _interactable.OnAim(_playerManager);
             }
-            else if (hit.transform.TryGetComponent<Pickable>(out _pickable))
+
+            _aimAtPickable = hit.transform.TryGetComponent<Pickable>(out _pickable);
+            if (_aimAtPickable)
             {
                 _pickable.OnAim(_playerManager);
             }
-            else
-            {
-                UIManager.Instance.SetCrosshair(CrosshairModes.Dot);
-            }
         }
-        else
+        
+        if(!(_aimAtPickable || _aimAtInteractable))
         {
             UIManager.Instance.SetCrosshair(CrosshairModes.Dot);
         }
@@ -54,6 +60,11 @@ public class PlayerLook : MonoBehaviour
 
     private void OnInteractAction(InputAction.CallbackContext context)
     {
-        _interactable?.OnInteract();
+        if(_aimAtInteractable) _interactable.OnInteract();
+
+        if (_aimAtPickable && _playerManager.TryGetReference<PlayerInspect>(out var playerInspect))
+        {
+            if (playerInspect.TryPickObject(_pickable.transform)) _pickable.OnPick();
+        }
     }
 }

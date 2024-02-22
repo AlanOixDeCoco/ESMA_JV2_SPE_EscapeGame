@@ -14,7 +14,6 @@ public class PlayerManager : MonoBehaviour
         {
             if (component.GetType() == typeof(T))
             {
-                Debug.Log("test");
                 reference = (T)component;
                 return true;
             }

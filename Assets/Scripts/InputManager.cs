@@ -2,14 +2,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
     private static InputManager _instance;
-    
+
     private PlayerInputs _playerInputs;
 
     public static InputManager Instance => _instance;
+
+    public PlayerInputs PlayerInputs => _playerInputs;
 
     private void Awake()
     {
@@ -19,10 +22,9 @@ public class InputManager : MonoBehaviour
         }
         else
         {
+            _playerInputs = new PlayerInputs();
             _instance = this;
         }
-        
-        _playerInputs = new PlayerInputs();
     }
 
     private void OnEnable()
@@ -33,20 +35,5 @@ public class InputManager : MonoBehaviour
     private void OnDisable()
     {
         _playerInputs.Disable();
-    }
-
-    public Vector2 GetPlayerMovement()
-    {
-        return _playerInputs.FPS_Gameplay.Movement.ReadValue<Vector2>();
-    }
-    
-    public Vector2 GetPlayerLook()
-    {
-        return _playerInputs.FPS_Gameplay.Look.ReadValue<Vector2>();
-    }
-
-    public bool PlayerJumpedThisFrame()
-    {
-        return _playerInputs.FPS_Gameplay.Jump.triggered;
     }
 }

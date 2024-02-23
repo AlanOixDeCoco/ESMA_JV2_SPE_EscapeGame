@@ -5,20 +5,29 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PlayerManager))]
+[RequireComponent(typeof(PlayerHand))]
 public class PlayerLook : PlayerComponent
 {
-    [SerializeField] private LayerMask _layerMask;
+    [Header("References")]
     [SerializeField] private Transform _playerHeadTransform;
+    
+    [Header("Look settings")]
+    [SerializeField] private LayerMask _layerMask;
     [SerializeField] private float _maxInteractionDistance = 1.5f;
     
-    private Interactable _interactable;
-    private Pickable _pickable;
+    // Look state machine
+    private LookState _activeLookState;
+
+    private bool _aimingAtObject = false;
+    private Transform _aimObject;
     
     private Transform _mainCameraTransform;
     private InputManager _inputManager;
     private PlayerManager _playerManager;
 
-    private bool _aimAtInteractable = false, _aimAtPickable = false;
+    public bool AimingAtObject => _aimingAtObject;
+
+    public Transform AimObject => _aimObject;
 
     private void Start()
     {
@@ -27,44 +36,37 @@ public class PlayerLook : PlayerComponent
         _playerManager = GetComponent<PlayerManager>();
         
         _inputManager.PlayerInputs.FPS_Gameplay.Interact.started += OnInteractAction;
+        
+        // Setup look state machine
+        _activeLookState = new DefaultLookState(_playerManager, this);
+        _activeLookState.OnEnterState();
     }
 
     private void Update()
     {
+        _activeLookState.OnTick();
+        
         _playerHeadTransform.forward = _mainCameraTransform.forward;
 
-        _aimAtInteractable = false;
-        _aimAtPickable = false;
+        _aimingAtObject = Physics.Raycast(
+            _playerHeadTransform.position, 
+            _mainCameraTransform.forward, 
+            out var hit,
+            _maxInteractionDistance, 
+            _layerMask
+            );
 
-        if (Physics.Raycast(_playerHeadTransform.position, _mainCameraTransform.forward, out var hit,
-                _maxInteractionDistance, _layerMask))
-        {
-            _aimAtInteractable = hit.transform.TryGetComponent<Interactable>(out _interactable);
-            if (_aimAtInteractable)
-            {
-                _interactable.OnAim(_playerManager);
-            }
+        if (_aimingAtObject) _aimObject = hit.transform;
+    }
 
-            _aimAtPickable = hit.transform.TryGetComponent<Pickable>(out _pickable);
-            if (_aimAtPickable)
-            {
-                _pickable.OnAim(_playerManager);
-            }
-        }
-        
-        if(!(_aimAtPickable || _aimAtInteractable))
-        {
-            UIManager.Instance.SetCrosshair(CrosshairModes.Dot);
-        }
+    public void SwitchLookState(LookState lookstate)
+    {
+        _activeLookState = lookstate;
+        _activeLookState.OnEnterState();
     }
 
     private void OnInteractAction(InputAction.CallbackContext context)
     {
-        if(_aimAtInteractable) _interactable.Interact();
-
-        if (_aimAtPickable && _playerManager.TryGetReference<PlayerInspect>(out var playerInspect))
-        {
-            if (playerInspect.TryPickObject(_pickable.transform)) _pickable.Pick();
-        }
+        _activeLookState.OnInteract();
     }
 }

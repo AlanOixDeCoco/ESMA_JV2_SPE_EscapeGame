@@ -177,7 +177,6 @@ GameObject:
   - component: {fileID: 8075040952940559403}
   - component: {fileID: 8277268068915489185}
   - component: {fileID: 5146826192870346461}
-  - component: {fileID: 250631588805770270}
   m_Layer: 0
   m_Name: Radio
   m_TagString: Untagged
@@ -258,28 +257,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.19999999, y: 0.45, z: 0.49999994}
   m_Center: {x: 0, y: 0.225, z: -0.000000029802322}
---- !u!114 &250631588805770270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2881574039587950642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e0eb9661dcb8ea4f8acb45586df32e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  originalRenderers:
-  - {fileID: 8633489127642849357}
-  - {fileID: 3474083558318695407}
-  - {fileID: 3189568704459536280}
-  - {fileID: 2170477272790765842}
-  - {fileID: 7646279983207230864}
-  - {fileID: 3084061885839745362}
-  - {fileID: 3968026549992886632}
-  - {fileID: 7563466637863057706}
-  - {fileID: 6082831122869551380}
 --- !u!1 &3407913261697889891
 GameObject:
   m_ObjectHideFlags: 0

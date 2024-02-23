@@ -7,17 +7,8 @@ public class Interactable : MonoBehaviour
 {
     [SerializeField] private UnityEvent<PlayerManager> _onInteract;
     
-    private PlayerManager _playerManager;
-
-    public void OnAim(PlayerManager playerManager)
+    public void Interact(PlayerManager playerManager)
     {
-        _playerManager = playerManager;
-        UIManager.Instance.SetCrosshair(CrosshairModes.Interact);
-    }
-    
-    public void Interact()
-    {
-        _onInteract.Invoke(_playerManager);
-        SendMessage("OnInteract", _playerManager);
+        _onInteract.Invoke(playerManager);
     }
 }

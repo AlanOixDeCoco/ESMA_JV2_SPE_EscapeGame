@@ -7,27 +7,30 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Rigidbody))]
 public class Pickable : MonoBehaviour
 {
+    [SerializeField] private UnityEvent<PlayerManager> _onInteract;
     [SerializeField] private UnityEvent<PlayerManager> _onPick;
 
-    private PlayerManager _playerManager;
     private Rigidbody _rb;
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
     }
-
-    public void OnAim(PlayerManager playerManager)
+    
+    public void Interact(PlayerManager playerManager)
     {
-        _playerManager = playerManager;
-        UIManager.Instance.SetCrosshair(CrosshairModes.Pick);
+        _onInteract.Invoke(playerManager);
     }
 
-    public void Pick()
+    public void Pick(PlayerManager playerManager)
     {
         _rb.isKinematic = true;
         
-        _onPick.Invoke(_playerManager);
-        SendMessage("OnPick", _playerManager);
+        _onPick.Invoke(playerManager);
+
+        if (playerManager.TryGetReference<PlayerHand>(out var playerHand))
+        {
+            playerHand.TryPickObject(transform);
+        }
     }
 }

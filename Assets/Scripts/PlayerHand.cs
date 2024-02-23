@@ -8,20 +8,45 @@ using Quaternion = UnityEngine.Quaternion;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
-public class PlayerInspect : PlayerComponent
+public class PlayerHand : PlayerComponent
 {
+    [Header("Rotation")]
     [SerializeField] private Transform _handTransform;
     [SerializeField] private float _rotationSpeed = 90f;
+    [SerializeField] private float _rotationOffset = -90f;
+
+    [Header("Drop")] 
+    [SerializeField] private Transform _headTransform;
+    [SerializeField] private float _dropVelocity = 2f;
 
     private InputManager _inputManager;
+    
+    
+    // Pickable
+    private bool _holdPickable = false;
+    private Pickable _pickable;
     private Transform _pickableTransform;
-    private Transform _pickableParent;
-    private bool _hasPickable = false;
+    private Transform _pickableInitialParent;
 
+    // Rotation values
     private float _handRotation = 0;
     private float _pickableRotation = 0;
 
+    // Default hand rotation
     private float _defaultHandRotation;
+
+    public bool HoldPickable => _holdPickable; // Property --> .HasPickable
+
+    public bool TryGetPickable(out Pickable pickable)
+    {
+        if (_holdPickable)
+        {
+            pickable = _pickable;
+            return true;
+        }
+        pickable = null;
+        return false;
+    }
 
     private void Start()
     {
@@ -34,22 +59,22 @@ public class PlayerInspect : PlayerComponent
 
     private void Update()
     {
-        if(_hasPickable) ProcessInspect(_inputManager.PlayerInputs.FPS_Gameplay.Inspect.ReadValue<Vector2>());
+        if(HoldPickable) ProcessInspect(_inputManager.PlayerInputs.FPS_Gameplay.Inspect.ReadValue<Vector2>());
     }
 
-    public bool TryPickObject(Transform pickable)
+    public bool TryPickObject(Transform pickableTransform)
     {
-        if (_hasPickable) return false;
+        if (HoldPickable) return false;
         
-        _handRotation = _defaultHandRotation - 90f;
+        _handRotation = _defaultHandRotation + _rotationOffset;
         _pickableRotation = 0f;
         
-        _pickableTransform = pickable;
-        _pickableParent = _pickableTransform.parent;
+        _pickableTransform = pickableTransform;
+        _pickableInitialParent = _pickableTransform.parent;
         _pickableTransform.SetParent(_handTransform);
         _pickableTransform.localPosition = Vector3.zero;
         
-        _hasPickable = true;
+        _holdPickable = true;
 
         return true;
     }
@@ -58,13 +83,15 @@ public class PlayerInspect : PlayerComponent
     {
         if (_pickableTransform != null)
         {
-            _hasPickable = false;
+            _holdPickable = false;
             
-            _pickableTransform.parent = _pickableParent;
+            _pickableTransform.parent = _pickableInitialParent;
             
             var pickableRb = _pickableTransform.GetComponent<Rigidbody>();
             pickableRb.isKinematic = false;
-            pickableRb.velocity = GetComponent<CharacterController>().velocity;
+            pickableRb.velocity = 
+                GetComponent<CharacterController>().velocity
+                + _headTransform.forward * _dropVelocity;
         
             _pickableTransform = null;
         }
@@ -78,7 +105,7 @@ public class PlayerInspect : PlayerComponent
         _handRotation += input.y * _rotationSpeed * Time.deltaTime;
         _pickableRotation += -input.x * _rotationSpeed * Time.deltaTime;
 
-        _handRotation = Mathf.Clamp(_handRotation, -160f - 90f, 160 - 90f);
+        _handRotation = Mathf.Clamp(_handRotation, -160f + _rotationOffset, 160 + _rotationOffset);
         _pickableRotation = Mathf.Clamp(_pickableRotation, -160f, 160);
     }
 }

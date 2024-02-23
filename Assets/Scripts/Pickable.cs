@@ -15,6 +15,9 @@ public class Pickable : MonoBehaviour
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
+
+        // Ensure pickable is using the right collision detection mode
+        _rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
     }
     
     public void Interact(PlayerManager playerManager)

@@ -15,6 +15,9 @@ public class PlayerHand : PlayerComponent
     [SerializeField] private float _rotationSpeed = 90f;
     [SerializeField] private float _rotationOffset = -90f;
 
+    [Header("Pick")]
+    [SerializeField] private float _pickDuration = .5f;
+    
     [Header("Drop")] 
     [SerializeField] private Transform _headTransform;
     [SerializeField] private float _dropVelocity = 2f;
@@ -23,6 +26,7 @@ public class PlayerHand : PlayerComponent
     
     
     // Pickable
+    private bool _picking = false;
     private bool _holdPickable = false;
     private Pickable _pickable;
     private Transform _pickableTransform;
@@ -59,12 +63,20 @@ public class PlayerHand : PlayerComponent
 
     private void Update()
     {
-        if(HoldPickable) ProcessInspect(_inputManager.PlayerInputs.FPS_Gameplay.Inspect.ReadValue<Vector2>());
+        if(HoldPickable && !_picking) ProcessInspect(_inputManager.PlayerInputs.FPS_Gameplay.Inspect.ReadValue<Vector2>());
     }
 
     public bool TryPickObject(Transform pickableTransform)
     {
-        if (HoldPickable) return false;
+        if (HoldPickable || _picking) return false;
+
+        StartCoroutine(PickObject(pickableTransform));
+        return true;
+    }
+
+    private IEnumerator PickObject(Transform pickableTransform)
+    {
+        _picking = true;
         
         _handRotation = _defaultHandRotation + _rotationOffset;
         _pickableRotation = 0f;
@@ -72,11 +84,22 @@ public class PlayerHand : PlayerComponent
         _pickableTransform = pickableTransform;
         _pickableInitialParent = _pickableTransform.parent;
         _pickableTransform.SetParent(_handTransform);
+
+        var initialPos = _pickableTransform.localPosition;
+        float time = 0;
+        while (time < _pickDuration)
+        {
+            time += Time.deltaTime;
+            _pickableTransform.localPosition = Vector3.Lerp(initialPos, Vector3.zero, time/_pickDuration);
+            yield return new WaitForEndOfFrame();
+        }
         _pickableTransform.localPosition = Vector3.zero;
         
         _holdPickable = true;
 
-        return true;
+        _picking = false;
+
+        yield return new WaitForEndOfFrame();
     }
 
     public void DropObject(InputAction.CallbackContext context)
@@ -90,8 +113,7 @@ public class PlayerHand : PlayerComponent
             var pickableRb = _pickableTransform.GetComponent<Rigidbody>();
             pickableRb.isKinematic = false;
             pickableRb.velocity = 
-                GetComponent<CharacterController>().velocity
-                + _headTransform.forward * _dropVelocity;
+                GetComponent<CharacterController>().velocity * _dropVelocity;
         
             _pickableTransform = null;
         }

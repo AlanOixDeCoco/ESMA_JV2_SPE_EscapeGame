@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 6173889179879739266}
   - component: {fileID: 4601634133466559944}
   - component: {fileID: 4889982725303652894}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,7 +50,7 @@ CharacterController:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -92,6 +92,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerSpeed: 4
+  _crouchOffset: {x: 0, y: -0.5, z: 0}
+  _headTransform: {fileID: 1789032653533144661}
 --- !u!114 &4601634133466559944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,6 +109,8 @@ MonoBehaviour:
   _handTransform: {fileID: 2647192333811248796}
   _rotationSpeed: 90
   _rotationOffset: -90
+  _headTransform: {fileID: 1789032653533144661}
+  _dropVelocity: 1.5
 --- !u!114 &4889982725303652894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,7 +127,7 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  _maxInteractionDistance: 3
+  _maxInteractionDistance: 1.5
 --- !u!1 &8243960287588246750
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,7 +137,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2647192333811248796}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,7 +168,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1789032653533144661}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +184,7 @@ Transform:
   m_GameObject: {fileID: 9025094787956913118}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.6, z: 0}
+  m_LocalPosition: {x: 0, y: 1.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

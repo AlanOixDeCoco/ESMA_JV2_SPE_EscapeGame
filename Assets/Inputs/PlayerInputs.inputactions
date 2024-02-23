@@ -15,15 +15,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Jump",
-                    "type": "Button",
-                    "id": "f61e55eb-d323-4c82-8074-e29178cd1933",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Interact",
                     "type": "Button",
                     "id": "1f4ffde7-09c4-4da4-8df5-3b1f2735ab03",
@@ -54,6 +45,15 @@
                     "name": "Drop",
                     "type": "Button",
                     "id": "1eb2708a-4b66-409c-8e98-632c575845c3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Crouch",
+                    "type": "Button",
+                    "id": "f358a272-298f-4ef9-b8a9-fb83bd5ca6aa",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -129,17 +129,6 @@
                 },
                 {
                     "name": "",
-                    "id": "1da6816d-c225-4190-babd-af9e21417840",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "ea71170b-f4ee-4650-b5b3-5005679d95e7",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
@@ -162,8 +151,8 @@
                 },
                 {
                     "name": "",
-                    "id": "ebf72449-6e6a-47dd-ad12-f6e943f120ef",
-                    "path": "<Gamepad>/buttonSouth",
+                    "id": "7b50a103-dafe-4ec0-a967-88de8c466d0b",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -173,8 +162,8 @@
                 },
                 {
                     "name": "",
-                    "id": "eb85712f-daac-4b3a-bb0f-32bc67b4a434",
-                    "path": "<Gamepad>/buttonEast",
+                    "id": "ebf72449-6e6a-47dd-ad12-f6e943f120ef",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -300,6 +289,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Drop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3f0632bd-3005-4b1d-8103-c3242697044e",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Crouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eb0263d0-21d2-4f47-a01f-896c9dd96de7",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Crouch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

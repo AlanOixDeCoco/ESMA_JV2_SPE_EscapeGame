@@ -37,15 +37,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Jump"",
-                    ""type"": ""Button"",
-                    ""id"": ""f61e55eb-d323-4c82-8074-e29178cd1933"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Interact"",
                     ""type"": ""Button"",
                     ""id"": ""1f4ffde7-09c4-4da4-8df5-3b1f2735ab03"",
@@ -76,6 +67,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""name"": ""Drop"",
                     ""type"": ""Button"",
                     ""id"": ""1eb2708a-4b66-409c-8e98-632c575845c3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Crouch"",
+                    ""type"": ""Button"",
+                    ""id"": ""f358a272-298f-4ef9-b8a9-fb83bd5ca6aa"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -151,17 +151,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""1da6816d-c225-4190-babd-af9e21417840"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""ea71170b-f4ee-4650-b5b3-5005679d95e7"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
@@ -184,8 +173,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""ebf72449-6e6a-47dd-ad12-f6e943f120ef"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""id"": ""7b50a103-dafe-4ec0-a967-88de8c466d0b"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -195,8 +184,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""eb85712f-daac-4b3a-bb0f-32bc67b4a434"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""id"": ""ebf72449-6e6a-47dd-ad12-f6e943f120ef"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -324,6 +313,28 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""Drop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3f0632bd-3005-4b1d-8103-c3242697044e"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eb0263d0-21d2-4f47-a01f-896c9dd96de7"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -361,11 +372,11 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         // FPS_Gameplay
         m_FPS_Gameplay = asset.FindActionMap("FPS_Gameplay", throwIfNotFound: true);
         m_FPS_Gameplay_Movement = m_FPS_Gameplay.FindAction("Movement", throwIfNotFound: true);
-        m_FPS_Gameplay_Jump = m_FPS_Gameplay.FindAction("Jump", throwIfNotFound: true);
         m_FPS_Gameplay_Interact = m_FPS_Gameplay.FindAction("Interact", throwIfNotFound: true);
         m_FPS_Gameplay_Look = m_FPS_Gameplay.FindAction("Look", throwIfNotFound: true);
         m_FPS_Gameplay_Inspect = m_FPS_Gameplay.FindAction("Inspect", throwIfNotFound: true);
         m_FPS_Gameplay_Drop = m_FPS_Gameplay.FindAction("Drop", throwIfNotFound: true);
+        m_FPS_Gameplay_Crouch = m_FPS_Gameplay.FindAction("Crouch", throwIfNotFound: true);
         // FPS_UI
         m_FPS_UI = asset.FindActionMap("FPS_UI", throwIfNotFound: true);
         m_FPS_UI_Pause = m_FPS_UI.FindAction("Pause", throwIfNotFound: true);
@@ -431,21 +442,21 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_FPS_Gameplay;
     private List<IFPS_GameplayActions> m_FPS_GameplayActionsCallbackInterfaces = new List<IFPS_GameplayActions>();
     private readonly InputAction m_FPS_Gameplay_Movement;
-    private readonly InputAction m_FPS_Gameplay_Jump;
     private readonly InputAction m_FPS_Gameplay_Interact;
     private readonly InputAction m_FPS_Gameplay_Look;
     private readonly InputAction m_FPS_Gameplay_Inspect;
     private readonly InputAction m_FPS_Gameplay_Drop;
+    private readonly InputAction m_FPS_Gameplay_Crouch;
     public struct FPS_GameplayActions
     {
         private @PlayerInputs m_Wrapper;
         public FPS_GameplayActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_FPS_Gameplay_Movement;
-        public InputAction @Jump => m_Wrapper.m_FPS_Gameplay_Jump;
         public InputAction @Interact => m_Wrapper.m_FPS_Gameplay_Interact;
         public InputAction @Look => m_Wrapper.m_FPS_Gameplay_Look;
         public InputAction @Inspect => m_Wrapper.m_FPS_Gameplay_Inspect;
         public InputAction @Drop => m_Wrapper.m_FPS_Gameplay_Drop;
+        public InputAction @Crouch => m_Wrapper.m_FPS_Gameplay_Crouch;
         public InputActionMap Get() { return m_Wrapper.m_FPS_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -458,9 +469,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
-            @Jump.started += instance.OnJump;
-            @Jump.performed += instance.OnJump;
-            @Jump.canceled += instance.OnJump;
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
@@ -473,6 +481,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Drop.started += instance.OnDrop;
             @Drop.performed += instance.OnDrop;
             @Drop.canceled += instance.OnDrop;
+            @Crouch.started += instance.OnCrouch;
+            @Crouch.performed += instance.OnCrouch;
+            @Crouch.canceled += instance.OnCrouch;
         }
 
         private void UnregisterCallbacks(IFPS_GameplayActions instance)
@@ -480,9 +491,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
-            @Jump.started -= instance.OnJump;
-            @Jump.performed -= instance.OnJump;
-            @Jump.canceled -= instance.OnJump;
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
@@ -495,6 +503,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Drop.started -= instance.OnDrop;
             @Drop.performed -= instance.OnDrop;
             @Drop.canceled -= instance.OnDrop;
+            @Crouch.started -= instance.OnCrouch;
+            @Crouch.performed -= instance.OnCrouch;
+            @Crouch.canceled -= instance.OnCrouch;
         }
 
         public void RemoveCallbacks(IFPS_GameplayActions instance)
@@ -561,11 +572,11 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     public interface IFPS_GameplayActions
     {
         void OnMovement(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnInspect(InputAction.CallbackContext context);
         void OnDrop(InputAction.CallbackContext context);
+        void OnCrouch(InputAction.CallbackContext context);
     }
     public interface IFPS_UIActions
     {

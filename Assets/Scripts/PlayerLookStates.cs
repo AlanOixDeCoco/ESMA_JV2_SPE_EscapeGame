@@ -23,7 +23,6 @@ public class DefaultLookState : LookState
     
     public override void OnEnterState()
     {
-        Debug.Log("Enter default look state!");
         UIManager.Instance.SetCrosshair(CrosshairModes.Dot);
     }
 
@@ -62,7 +61,6 @@ public class InteractableLookState : LookState
 
     public override void OnEnterState()
     {
-        Debug.Log("Enter interactable look state!");
         UIManager.Instance.SetCrosshair(CrosshairModes.Interact);
     }
 
@@ -95,7 +93,6 @@ public class PickableLookState : LookState
 
     public override void OnEnterState()
     {
-        Debug.Log("Enter pickable look state!");
         UIManager.Instance.SetCrosshair(CrosshairModes.Pick);
     }
 

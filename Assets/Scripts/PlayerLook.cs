@@ -60,11 +60,11 @@ public class PlayerLook : PlayerComponent
 
     private void OnInteractAction(InputAction.CallbackContext context)
     {
-        if(_aimAtInteractable) _interactable.OnInteract();
+        if(_aimAtInteractable) _interactable.Interact();
 
         if (_aimAtPickable && _playerManager.TryGetReference<PlayerInspect>(out var playerInspect))
         {
-            if (playerInspect.TryPickObject(_pickable.transform)) _pickable.OnPick();
+            if (playerInspect.TryPickObject(_pickable.transform)) _pickable.Pick();
         }
     }
 }

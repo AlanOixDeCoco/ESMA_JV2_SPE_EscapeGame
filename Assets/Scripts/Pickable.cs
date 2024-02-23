@@ -23,10 +23,11 @@ public class Pickable : MonoBehaviour
         UIManager.Instance.SetCrosshair(CrosshairModes.Pick);
     }
 
-    public void OnPick()
+    public void Pick()
     {
         _rb.isKinematic = true;
         
         _onPick.Invoke(_playerManager);
+        SendMessage("OnPick", _playerManager);
     }
 }

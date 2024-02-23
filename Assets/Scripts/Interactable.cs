@@ -15,8 +15,9 @@ public class Interactable : MonoBehaviour
         UIManager.Instance.SetCrosshair(CrosshairModes.Interact);
     }
     
-    public void OnInteract()
+    public void Interact()
     {
         _onInteract.Invoke(_playerManager);
+        SendMessage("OnInteract", _playerManager);
     }
 }

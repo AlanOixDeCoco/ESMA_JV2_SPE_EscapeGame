@@ -9695,16 +9695,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4601634133466559944, guid: c8a679aa16b0ce14aac2e088b3d5625f,
-        type: 3}
-      propertyPath: _dropVelocity
-      value: 1.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 4601634133466559944, guid: c8a679aa16b0ce14aac2e088b3d5625f,
-        type: 3}
-      propertyPath: _pickDuration
-      value: 0.05
-      objectReference: {fileID: 0}
     - target: {fileID: 6564272660554864364, guid: c8a679aa16b0ce14aac2e088b3d5625f,
         type: 3}
       propertyPath: m_Name
@@ -19171,7 +19161,7 @@ PrefabInstance:
     - target: {fileID: 5612318168543255213, guid: 239f5584b9a0daf458c586376537e9dc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.75
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 5612318168543255213, guid: 239f5584b9a0daf458c586376537e9dc,
         type: 3}
@@ -19367,7 +19357,7 @@ PrefabInstance:
     - target: {fileID: 2022142418871148179, guid: 8ce51ba792ebcbf40a04735e25bfd827,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.75
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 2022142418871148179, guid: 8ce51ba792ebcbf40a04735e25bfd827,
         type: 3}

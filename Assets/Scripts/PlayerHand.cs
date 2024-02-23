@@ -36,9 +36,6 @@ public class PlayerHand : PlayerComponent
     private float _handRotation = 0;
     private float _pickableRotation = 0;
 
-    // Default hand rotation
-    private float _defaultHandRotation;
-
     public bool HoldPickable => _holdPickable; // Property --> .HasPickable
 
     public bool TryGetPickable(out Pickable pickable)
@@ -57,13 +54,11 @@ public class PlayerHand : PlayerComponent
         _inputManager = InputManager.Instance;
 
         _inputManager.PlayerInputs.FPS_Gameplay.Drop.started += DropObject;
-        
-        _defaultHandRotation = _handTransform.localEulerAngles.x;
     }
 
     private void Update()
     {
-        if(HoldPickable && !_picking) ProcessInspect(_inputManager.PlayerInputs.FPS_Gameplay.Inspect.ReadValue<Vector2>());
+        if(HoldPickable && !_picking) ProcessRotation(_inputManager.PlayerInputs.FPS_Gameplay.Inspect.ReadValue<Vector2>());
     }
 
     public bool TryPickObject(Transform pickableTransform)
@@ -78,19 +73,24 @@ public class PlayerHand : PlayerComponent
     {
         _picking = true;
         
-        _handRotation = _defaultHandRotation + _rotationOffset;
+        _handRotation = _rotationOffset;
         _pickableRotation = 0f;
+        
+        // Rotate hand
+        _handTransform.localEulerAngles = Vector3.right * _handRotation;
         
         _pickableTransform = pickableTransform;
         _pickableInitialParent = _pickableTransform.parent;
         _pickableTransform.SetParent(_handTransform);
 
         var initialPos = _pickableTransform.localPosition;
+        var initialRotation = _pickableTransform.localRotation;
         float time = 0;
         while (time < _pickDuration)
         {
             time += Time.deltaTime;
             _pickableTransform.localPosition = Vector3.Lerp(initialPos, Vector3.zero, time/_pickDuration);
+            _pickableTransform.localRotation = Quaternion.Lerp(initialRotation, Quaternion.identity, time/_pickDuration);
             yield return new WaitForEndOfFrame();
         }
         _pickableTransform.localPosition = Vector3.zero;
@@ -119,7 +119,7 @@ public class PlayerHand : PlayerComponent
         }
     }
     
-    private void ProcessInspect(Vector2 input)
+    private void ProcessRotation(Vector2 input)
     {
         _handTransform.localEulerAngles = Vector3.right * _handRotation;
         _pickableTransform.localEulerAngles = Vector3.forward * _pickableRotation;

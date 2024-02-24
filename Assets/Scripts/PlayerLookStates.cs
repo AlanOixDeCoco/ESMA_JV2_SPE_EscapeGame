@@ -34,13 +34,13 @@ public class DefaultLookState : LookState
         // If aiming at interactable
         if (_playerLook.AimObject.TryGetComponent<Interactable>(out var interactable))
         {
-            _playerLook.SwitchLookState(new InteractableLookState(_playerLook, interactable));
+            if(interactable.enabled) _playerLook.SwitchLookState(new InteractableLookState(_playerLook, interactable));
         }
         
         // If aiming at pickable
         if (_playerLook.AimObject.TryGetComponent<Pickable>(out var pickable))
         {
-            _playerLook.SwitchLookState(new PickableLookState(_playerLook, pickable));
+            if(pickable.enabled) _playerLook.SwitchLookState(new PickableLookState(_playerLook, pickable));
         }
     }
 

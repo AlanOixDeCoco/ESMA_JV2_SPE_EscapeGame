@@ -4,13 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(PlayerManager))]
 [RequireComponent(typeof(PlayerHand))]
 public class PlayerLook : PlayerComponent
 {
-    [Header("References")]
-    [SerializeField] private Transform _playerHeadTransform;
-    
     [Header("Look settings")]
     [SerializeField] private LayerMask _layerMask;
     [SerializeField] private float _maxInteractionDistance = 1.5f;
@@ -22,8 +18,6 @@ public class PlayerLook : PlayerComponent
     private Transform _aimObject;
     
     private Transform _mainCameraTransform;
-    private InputManager _inputManager;
-    private PlayerManager _playerManager;
 
     public bool AimingAtObject => _aimingAtObject;
 
@@ -32,24 +26,22 @@ public class PlayerLook : PlayerComponent
     private void Start()
     {
         _mainCameraTransform = Camera.main.transform;
-        _inputManager = InputManager.Instance;
-        _playerManager = GetComponent<PlayerManager>();
         
-        _inputManager.PlayerInputs.FPS_Gameplay.Interact.started += OnInteractAction;
+        InputManager.Instance.PlayerInputs.FPS_Gameplay.Interact.started += OnInteractAction;
         
         // Setup look state machine
-        _activeLookState = new DefaultLookState(_playerManager, this);
+        _activeLookState = new DefaultLookState(this);
         _activeLookState.OnEnterState();
     }
 
     private void Update()
     {
-        _activeLookState.OnTick();
+        _playerManager.PlayerHead.forward = _mainCameraTransform.forward;
         
-        _playerHeadTransform.forward = _mainCameraTransform.forward;
+        _activeLookState.OnTick();
 
         _aimingAtObject = Physics.Raycast(
-            _playerHeadTransform.position, 
+            _playerManager.PlayerHead.position, 
             _mainCameraTransform.forward, 
             out var hit,
             _maxInteractionDistance, 

@@ -31,7 +31,7 @@ public class Pickable : MonoBehaviour
         
         _onPick.Invoke(playerManager);
 
-        if (playerManager.TryGetReference<PlayerHand>(out var playerHand))
+        if (playerManager.TryGetComponent<PlayerHand>(out var playerHand))
         {
             playerHand.TryPickObject(transform);
         }

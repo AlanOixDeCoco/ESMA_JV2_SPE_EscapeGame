@@ -1,24 +1,43 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PlayerComponent : MonoBehaviour{}
+[RequireComponent(typeof(PlayerManager))]
+public abstract class PlayerComponent : MonoBehaviour
+{
+    protected PlayerManager _playerManager;
+
+    private void Awake()
+    {
+        _playerManager = GetComponent<PlayerManager>();
+    }
+}
 
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField] private PlayerComponent[] _componentsReferences;
+    // EDITOR VARIABLES
+    [Header("Player References")]
+    [SerializeField] private Transform _playerHead;
+    [SerializeField] private Transform _playerHand;
 
-    public bool TryGetReference<T>(out T reference) where T : PlayerComponent
+    private static PlayerManager _instance;
+
+    public static PlayerManager Instance => _instance;
+
+    public Transform PlayerHead => _playerHead;
+
+    public Transform PlayerHand => _playerHand;
+
+    private void Awake()
     {
-        foreach (var component in _componentsReferences)
+        if (Instance != null && Instance != this)
         {
-            if (component.GetType() == typeof(T))
-            {
-                reference = (T)component;
-                return true;
-            }
+            Destroy(this.gameObject);
         }
-        reference = null;
-        return false;
+        else
+        {
+            _instance = this;
+        }
     }
 }

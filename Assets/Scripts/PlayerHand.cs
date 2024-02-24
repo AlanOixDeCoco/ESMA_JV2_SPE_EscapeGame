@@ -11,19 +11,14 @@ using Vector3 = UnityEngine.Vector3;
 public class PlayerHand : PlayerComponent
 {
     [Header("Rotation")]
-    [SerializeField] private Transform _handTransform;
     [SerializeField] private float _rotationSpeed = 90f;
     [SerializeField] private float _rotationOffset = -90f;
 
     [Header("Pick")]
     [SerializeField] private float _pickDuration = .5f;
     
-    [Header("Drop")] 
-    [SerializeField] private Transform _headTransform;
+    [Header("Drop")]
     [SerializeField] private float _dropVelocity = 2f;
-
-    private InputManager _inputManager;
-    
     
     // Pickable
     private bool _picking = false;
@@ -51,14 +46,12 @@ public class PlayerHand : PlayerComponent
 
     private void Start()
     {
-        _inputManager = InputManager.Instance;
-
-        _inputManager.PlayerInputs.FPS_Gameplay.Drop.started += DropObject;
+        InputManager.Instance.PlayerInputs.FPS_Gameplay.Drop.started += DropObject;
     }
 
     private void Update()
     {
-        if(HoldPickable && !_picking) ProcessRotation(_inputManager.PlayerInputs.FPS_Gameplay.Inspect.ReadValue<Vector2>());
+        if(HoldPickable && !_picking) ProcessRotation(InputManager.Instance.PlayerInputs.FPS_Gameplay.Inspect.ReadValue<Vector2>());
     }
 
     public bool TryPickObject(Transform pickableTransform)
@@ -77,11 +70,11 @@ public class PlayerHand : PlayerComponent
         _pickableRotation = 0f;
         
         // Rotate hand
-        _handTransform.localEulerAngles = Vector3.right * _handRotation;
+        _playerManager.PlayerHand.localEulerAngles = Vector3.right * _handRotation;
         
         _pickableTransform = pickableTransform;
         _pickableInitialParent = _pickableTransform.parent;
-        _pickableTransform.SetParent(_handTransform);
+        _pickableTransform.SetParent(_playerManager.PlayerHand);
 
         var initialPos = _pickableTransform.localPosition;
         var initialRotation = _pickableTransform.localRotation;
@@ -121,7 +114,7 @@ public class PlayerHand : PlayerComponent
     
     private void ProcessRotation(Vector2 input)
     {
-        _handTransform.localEulerAngles = Vector3.right * _handRotation;
+        _playerManager.PlayerHand.localEulerAngles = Vector3.right * _handRotation;
         _pickableTransform.localEulerAngles = Vector3.forward * _pickableRotation;
 
         _handRotation += input.y * _rotationSpeed * Time.deltaTime;

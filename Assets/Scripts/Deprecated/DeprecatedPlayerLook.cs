@@ -16,7 +16,6 @@ public class DeprecatedPlayerLook : PlayerComponent
     
     private Transform _mainCameraTransform;
     private InputManager _inputManager;
-    private PlayerManager _playerManager;
 
     private bool _aimAtInteractable = false, _aimAtPickable = false;
 
@@ -53,7 +52,7 @@ public class DeprecatedPlayerLook : PlayerComponent
     {
         if(_aimAtInteractable) _interactable.Interact(_playerManager);
 
-        if (_aimAtPickable && _playerManager.TryGetReference<DeprecatedPlayerInspect>(out var playerInspect))
+        if (_aimAtPickable && _playerManager.TryGetComponent<DeprecatedPlayerInspect>(out var playerInspect))
         {
             if (playerInspect.TryPickObject(_pickable.transform)) _pickable.Pick(_playerManager);
         }

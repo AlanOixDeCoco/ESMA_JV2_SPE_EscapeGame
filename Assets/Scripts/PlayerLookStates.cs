@@ -6,9 +6,9 @@ public abstract class LookState
     protected PlayerManager _playerManager;
     protected PlayerLook _playerLook;
     
-    public LookState(PlayerManager playerManager, PlayerLook playerLook)
+    public LookState(PlayerLook playerLook)
     {
-        _playerManager = playerManager;
+        _playerManager = PlayerManager.Instance;
         _playerLook = playerLook;
     }
     
@@ -19,7 +19,7 @@ public abstract class LookState
 
 public class DefaultLookState : LookState
 {
-    public DefaultLookState(PlayerManager playerManager, PlayerLook playerLook) : base(playerManager, playerLook) { }
+    public DefaultLookState(PlayerLook playerLook) : base(playerLook) { }
     
     public override void OnEnterState()
     {
@@ -34,13 +34,13 @@ public class DefaultLookState : LookState
         // If aiming at interactable
         if (_playerLook.AimObject.TryGetComponent<Interactable>(out var interactable))
         {
-            _playerLook.SwitchLookState(new InteractableLookState(_playerManager, _playerLook, interactable));
+            _playerLook.SwitchLookState(new InteractableLookState(_playerLook, interactable));
         }
         
         // If aiming at pickable
         if (_playerLook.AimObject.TryGetComponent<Pickable>(out var pickable))
         {
-            _playerLook.SwitchLookState(new PickableLookState(_playerManager, _playerLook, pickable));
+            _playerLook.SwitchLookState(new PickableLookState(_playerLook, pickable));
         }
     }
 
@@ -54,7 +54,7 @@ public class InteractableLookState : LookState
 {
     private Interactable _aimedInteractable;
     
-    public InteractableLookState(PlayerManager playerManager, PlayerLook playerLook, Interactable interactable) : base(playerManager, playerLook)
+    public InteractableLookState(PlayerLook playerLook, Interactable interactable) : base(playerLook)
     {
         _aimedInteractable = interactable;
     }
@@ -69,7 +69,7 @@ public class InteractableLookState : LookState
         // If aiming at nothing
         if (!_playerLook.AimingAtObject || (_playerLook.AimObject.transform != _aimedInteractable.transform))
         {
-            _playerLook.SwitchLookState(new DefaultLookState(_playerManager, _playerLook));
+            _playerLook.SwitchLookState(new DefaultLookState(_playerLook));
             return;
         }
         
@@ -86,7 +86,7 @@ public class PickableLookState : LookState
 {
     private Pickable _aimedPickable;
     
-    public PickableLookState(PlayerManager playerManager, PlayerLook playerLook, Pickable pickable) : base(playerManager, playerLook)
+    public PickableLookState(PlayerLook playerLook, Pickable pickable) : base(playerLook)
     {
         _aimedPickable = pickable;
     }
@@ -101,7 +101,7 @@ public class PickableLookState : LookState
         // If aiming at nothing
         if (!_playerLook.AimingAtObject || (_playerLook.AimObject.transform != _aimedPickable.transform))
         {
-            _playerLook.SwitchLookState(new DefaultLookState(_playerManager, _playerLook));
+            _playerLook.SwitchLookState(new DefaultLookState(_playerLook));
             return;
         }
         

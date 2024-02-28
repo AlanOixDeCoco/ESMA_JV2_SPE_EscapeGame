@@ -212,6 +212,7 @@ MonoBehaviour:
   _rotationOffset: -90
   _pickDuration: 0.1
   _dropVelocity: 1.25
+  _selectedLayer: Selected
 --- !u!114 &4889982725303652894
 MonoBehaviour:
   m_ObjectHideFlags: 0

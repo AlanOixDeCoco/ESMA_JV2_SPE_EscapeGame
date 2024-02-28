@@ -19,6 +19,12 @@ public class PlayerHand : PlayerComponent
     
     [Header("Drop")]
     [SerializeField] private float _dropVelocity = 2f;
+
+    [Header("Rendering")] 
+    [SerializeField] private String _selectedLayer;
+    
+    // Rendering
+    private LayerMask _baseLayer;
     
     // Pickable
     private bool _picking = false;
@@ -65,6 +71,14 @@ public class PlayerHand : PlayerComponent
     private IEnumerator PickObject(Transform pickableTransform)
     {
         _picking = true;
+
+        var pickableGameobject = pickableTransform.gameObject;
+        
+        // Store base layer
+        _baseLayer = pickableGameobject.layer;
+        
+        // Change pickable layer to apply custom renderer
+        pickableGameobject.layer = LayerMask.NameToLayer(_selectedLayer);
         
         _handRotation = _rotationOffset;
         _pickableRotation = 0f;
@@ -107,6 +121,9 @@ public class PlayerHand : PlayerComponent
             pickableRb.isKinematic = false;
             pickableRb.velocity = 
                 GetComponent<CharacterController>().velocity * _dropVelocity;
+            
+            // Reset layer
+            _pickableTransform.gameObject.layer = _baseLayer;
         
             _pickableTransform = null;
         }

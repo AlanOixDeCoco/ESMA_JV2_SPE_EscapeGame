@@ -34,7 +34,7 @@ public class DefaultLookState : LookState
         // If aiming at interactable
         if (_playerLook.AimObject.TryGetComponent<Interactable>(out var interactable))
         {
-            if(interactable.enabled) _playerLook.SwitchLookState(new InteractableLookState(_playerLook, interactable));
+            if(interactable.enabled && interactable) _playerLook.SwitchLookState(new InteractableLookState(_playerLook, interactable));
         }
         
         // If aiming at pickable
@@ -61,23 +61,47 @@ public class InteractableLookState : LookState
 
     public override void OnEnterState()
     {
-        UIManager.Instance.SetCrosshair(CrosshairModes.Interact);
+        if (!_aimedInteractable.RequirePickable)
+        {
+            UIManager.Instance.SetCrosshair(CrosshairModes.Interact);
+            return;
+        }
+        else {
+            if (!_playerManager.PlayerHand.HoldPickable)
+            {
+                UIManager.Instance.SetCrosshair(CrosshairModes.CantInteract);
+                Debug.Log("Cant interact");
+                return;
+            }
+
+            if (_aimedInteractable.FitsInteraction(_playerManager.PlayerHand.PickableTransform))
+            {
+                UIManager.Instance.SetCrosshair(CrosshairModes.Interact);
+            }
+            else
+            {
+                UIManager.Instance.SetCrosshair(CrosshairModes.CantInteract);
+            }
+        }
     }
 
     public override void OnTick()
     {
         // If aiming at nothing
-        if (!_playerLook.AimingAtObject || (_playerLook.AimObject.transform != _aimedInteractable.transform))
+        if (!_playerLook.AimingAtObject || (_playerLook.AimObject != _aimedInteractable.transform))
         {
             _playerLook.SwitchLookState(new DefaultLookState(_playerLook));
             return;
         }
-        
-        // Manage interaction possibility
     }
 
     public override void OnInteract()
     {
+        if (_aimedInteractable.FitsInteraction(_playerManager.PlayerHand.PickableTransform))
+        {
+            _aimedInteractable.PickableInteract(_playerManager, _playerManager.PlayerHand.Pickable);
+        }
+        
         _aimedInteractable.Interact(_playerManager);
     }
 }
@@ -99,13 +123,15 @@ public class PickableLookState : LookState
     public override void OnTick()
     {
         // If aiming at nothing
-        if (!_playerLook.AimingAtObject || (_playerLook.AimObject.transform != _aimedPickable.transform))
+        if (!_playerLook.AimingAtObject || (_playerLook.AimObject != _aimedPickable.transform))
         {
             _playerLook.SwitchLookState(new DefaultLookState(_playerLook));
             return;
         }
         
         // Manage picking possibility
+        if(_playerManager.PlayerHand.HoldPickable) UIManager.Instance.SetCrosshair(CrosshairModes.CantPick);
+        else UIManager.Instance.SetCrosshair(CrosshairModes.Pick);
     }
 
     public override void OnInteract()

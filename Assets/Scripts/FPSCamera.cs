@@ -12,6 +12,6 @@ public class FPSCamera : MonoBehaviour
     {
         _virtualCamera = GetComponent<CinemachineVirtualCamera>();
 
-        _virtualCamera.Follow = PlayerManager.Instance.PlayerHead;
+        _virtualCamera.Follow = PlayerManager.Instance.PlayerHeadTransform;
     }
 }

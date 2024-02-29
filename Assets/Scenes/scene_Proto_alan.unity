@@ -9780,6 +9780,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4601634133466559944, guid: c8a679aa16b0ce14aac2e088b3d5625f,
+        type: 3}
+      propertyPath: _throwVelocity
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4889982725303652894, guid: c8a679aa16b0ce14aac2e088b3d5625f,
+        type: 3}
+      propertyPath: _layerMask.m_Bits
+      value: 65
+      objectReference: {fileID: 0}
     - target: {fileID: 6564272660554864364, guid: c8a679aa16b0ce14aac2e088b3d5625f,
         type: 3}
       propertyPath: m_Name

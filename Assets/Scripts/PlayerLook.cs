@@ -36,12 +36,12 @@ public class PlayerLook : PlayerComponent
 
     private void Update()
     {
-        _playerManager.PlayerHead.forward = _mainCameraTransform.forward;
+        _playerManager.PlayerHeadTransform.forward = _mainCameraTransform.forward;
         
         _activeLookState.OnTick();
 
         _aimingAtObject = Physics.Raycast(
-            _playerManager.PlayerHead.position, 
+            _playerManager.PlayerHeadTransform.position, 
             _mainCameraTransform.forward, 
             out var hit,
             _maxInteractionDistance, 

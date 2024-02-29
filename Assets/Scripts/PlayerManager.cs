@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(PlayerManager))]
 public abstract class PlayerComponent : MonoBehaviour
@@ -18,17 +19,19 @@ public class PlayerManager : MonoBehaviour
 {
     // EDITOR VARIABLES
     [Header("Player References")]
-    [SerializeField] private Transform _playerHead;
-    [SerializeField] private Transform _playerHand;
+    [FormerlySerializedAs("_playerHead")] [SerializeField] private Transform _playerHeadTransform;
+    [FormerlySerializedAs("_playerHand")] [SerializeField] private Transform _playerHandTransform;
 
     private static PlayerManager _instance;
 
     public static PlayerManager Instance => _instance;
 
-    public Transform PlayerHead => _playerHead;
+    public Transform PlayerHeadTransform => _playerHeadTransform;
 
-    public Transform PlayerHand => _playerHand;
+    public Transform PlayerHandTransform => _playerHandTransform;
 
+    public PlayerHand PlayerHand { get; private set; }
+    
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -39,5 +42,10 @@ public class PlayerManager : MonoBehaviour
         {
             _instance = this;
         }
+    }
+
+    private void Start()
+    {
+        PlayerHand = GetComponent<PlayerHand>();
     }
 }

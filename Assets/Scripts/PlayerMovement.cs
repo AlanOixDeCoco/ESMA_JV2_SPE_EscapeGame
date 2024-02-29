@@ -25,7 +25,7 @@ public class PlayerMovement : PlayerComponent
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        _headPosition = _playerManager.PlayerHead.localPosition;
+        _headPosition = _playerManager.PlayerHeadTransform.localPosition;
     }
 
     void Update()
@@ -58,6 +58,6 @@ public class PlayerMovement : PlayerComponent
 
     private void ProcessCrouch(float input)
     {
-        _playerManager.PlayerHead.localPosition = Vector3.Lerp(_playerManager.PlayerHead.localPosition, _headPosition + ((int)input * _crouchOffset), Time.deltaTime * 10f);
+        _playerManager.PlayerHeadTransform.localPosition = Vector3.Lerp(_playerManager.PlayerHeadTransform.localPosition, _headPosition + ((int)input * _crouchOffset), Time.deltaTime * 10f);
     }
 }

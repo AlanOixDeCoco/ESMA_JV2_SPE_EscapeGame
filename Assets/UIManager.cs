@@ -8,7 +8,9 @@ public enum CrosshairModes
 {
     Dot,
     Interact,
-    Pick
+    CantInteract,
+    Pick,
+    CantPick
 }
 
 [Serializable]

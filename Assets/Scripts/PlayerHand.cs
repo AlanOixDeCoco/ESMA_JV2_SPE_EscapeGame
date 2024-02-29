@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using Quaternion = UnityEngine.Quaternion;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
@@ -17,8 +18,9 @@ public class PlayerHand : PlayerComponent
     [Header("Pick")]
     [SerializeField] private float _pickDuration = .5f;
     
+    [FormerlySerializedAs("_dropVelocity")]
     [Header("Drop")]
-    [SerializeField] private float _dropVelocity = 2f;
+    [SerializeField] private float _throwVelocity = 2f;
 
     [Header("Rendering")] 
     [SerializeField] private String _selectedLayer;
@@ -36,8 +38,15 @@ public class PlayerHand : PlayerComponent
     // Rotation values
     private float _handRotation = 0;
     private float _pickableRotation = 0;
+    
+    // Drop/Throw
+    private bool _shouldThrow = false;
 
     public bool HoldPickable => _holdPickable; // Property --> .HasPickable
+
+    public Transform PickableTransform => _pickableTransform;
+
+    public Pickable Pickable => _pickable;
 
     public bool TryGetPickable(out Pickable pickable)
     {
@@ -52,7 +61,10 @@ public class PlayerHand : PlayerComponent
 
     private void Start()
     {
-        InputManager.Instance.PlayerInputs.FPS_Gameplay.Drop.started += DropObject;
+        InputManager.Instance.PlayerInputs.FPS_Gameplay.Throw.canceled += ProcessDropObject;
+        InputManager.Instance.PlayerInputs.FPS_Gameplay.Throw.performed += ProcessThrowObject;
+
+        //InputManager.Instance.PlayerInputs.FPS_Gameplay.Throw.performed += ThrowObject;
     }
 
     private void Update()
@@ -84,11 +96,11 @@ public class PlayerHand : PlayerComponent
         _pickableRotation = 0f;
         
         // Rotate hand
-        _playerManager.PlayerHand.localEulerAngles = Vector3.right * _handRotation;
+        _playerManager.PlayerHandTransform.localEulerAngles = Vector3.right * _handRotation;
         
         _pickableTransform = pickableTransform;
         _pickableInitialParent = _pickableTransform.parent;
-        _pickableTransform.SetParent(_playerManager.PlayerHand);
+        _pickableTransform.SetParent(_playerManager.PlayerHandTransform);
 
         var initialPos = _pickableTransform.localPosition;
         var initialRotation = _pickableTransform.localRotation;
@@ -109,29 +121,51 @@ public class PlayerHand : PlayerComponent
         yield return new WaitForEndOfFrame();
     }
 
-    public void DropObject(InputAction.CallbackContext context)
+    public void DropObject(bool shouldThrow)
     {
-        if (_pickableTransform != null)
+        var dropVelocity = Vector3.zero;
+        if (shouldThrow)
         {
-            _holdPickable = false;
-            
-            _pickableTransform.parent = _pickableInitialParent;
-            
-            var pickableRb = _pickableTransform.GetComponent<Rigidbody>();
-            pickableRb.isKinematic = false;
-            pickableRb.velocity = 
-                GetComponent<CharacterController>().velocity * _dropVelocity;
-            
-            // Reset layer
-            _pickableTransform.gameObject.layer = _baseLayer;
-        
-            _pickableTransform = null;
+            dropVelocity = _playerManager.PlayerHeadTransform.forward * _throwVelocity;
         }
+        else
+        {
+            dropVelocity = GetComponent<CharacterController>().velocity;
+        }
+        
+        _holdPickable = false;
+        
+        _pickableTransform.parent = _pickableInitialParent;
+        
+        var pickableRb = _pickableTransform.GetComponent<Rigidbody>();
+        pickableRb.isKinematic = false;
+        pickableRb.velocity = dropVelocity;
+        
+        // Reset layer
+        _pickableTransform.gameObject.layer = _baseLayer;
+
+        _pickableTransform = null;
+
+        _shouldThrow = false;
+    }
+
+    public void ProcessDropObject(InputAction.CallbackContext context)
+    {
+        if(_pickableTransform == null) return;
+        
+        DropObject(false);
+    }
+
+    public void ProcessThrowObject(InputAction.CallbackContext context)
+    {
+        if(_pickableTransform == null) return;
+        
+        DropObject(true);
     }
     
     private void ProcessRotation(Vector2 input)
     {
-        _playerManager.PlayerHand.localEulerAngles = Vector3.right * _handRotation;
+        _playerManager.PlayerHandTransform.localEulerAngles = Vector3.right * _handRotation;
         _pickableTransform.localEulerAngles = Vector3.forward * _pickableRotation;
 
         _handRotation += input.y * _rotationSpeed * Time.deltaTime;

@@ -588,12 +588,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ecf7b7c0d9e6043bcc018d828a5244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onInteract:
-    m_PersistentCalls:
-      m_Calls: []
-  _onPick:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!54 &70620184
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1143,12 +1137,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ecf7b7c0d9e6043bcc018d828a5244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onInteract:
-    m_PersistentCalls:
-      m_Calls: []
-  _onPick:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!54 &108837600
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1301,12 +1289,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ecf7b7c0d9e6043bcc018d828a5244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onInteract:
-    m_PersistentCalls:
-      m_Calls: []
-  _onPick:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!54 &165616462
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4020,12 +4002,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ecf7b7c0d9e6043bcc018d828a5244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onInteract:
-    m_PersistentCalls:
-      m_Calls: []
-  _onPick:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!54 &507518162
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4149,7 +4125,7 @@ LightingSettings:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   serializedVersion: 6
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_EnableBakedLightmaps: 1
   m_EnableRealtimeLightmaps: 0
   m_RealtimeEnvironmentLighting: 1
@@ -5420,12 +5396,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ecf7b7c0d9e6043bcc018d828a5244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onInteract:
-    m_PersistentCalls:
-      m_Calls: []
-  _onPick:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!54 &953784177
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5578,12 +5548,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ecf7b7c0d9e6043bcc018d828a5244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onInteract:
-    m_PersistentCalls:
-      m_Calls: []
-  _onPick:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!54 &965260400
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8393,12 +8357,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ecf7b7c0d9e6043bcc018d828a5244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onInteract:
-    m_PersistentCalls:
-      m_Calls: []
-  _onPick:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!54 &1227737158
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11386,12 +11344,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ecf7b7c0d9e6043bcc018d828a5244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onInteract:
-    m_PersistentCalls:
-      m_Calls: []
-  _onPick:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!54 &1536190717
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13330,12 +13282,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ecf7b7c0d9e6043bcc018d828a5244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onInteract:
-    m_PersistentCalls:
-      m_Calls: []
-  _onPick:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!54 &1636859227
 Rigidbody:
   m_ObjectHideFlags: 0

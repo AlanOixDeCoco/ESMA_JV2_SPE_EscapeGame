@@ -13,7 +13,6 @@ public class DeprecatedPlayerInspect : PlayerComponent
     [SerializeField] private Transform _handTransform;
     [SerializeField] private float _rotationSpeed = 90f;
 
-    private InputManager _inputManager;
     private Transform _pickableTransform;
     private Transform _pickableParent;
     private bool _hasPickable = false;
@@ -25,16 +24,14 @@ public class DeprecatedPlayerInspect : PlayerComponent
 
     private void Start()
     {
-        _inputManager = InputManager.Instance;
-
-        _inputManager.PlayerInputs.FPS_Gameplay.Drop.started += DropObject;
+        PlayerController.PlayerInputs.FPS_Gameplay.Drop.started += DropObject;
         
         _defaultHandRotation = _handTransform.localEulerAngles.x;
     }
 
     private void Update()
     {
-        if(_hasPickable) ProcessInspect(_inputManager.PlayerInputs.FPS_Gameplay.Inspect.ReadValue<Vector2>());
+        if(_hasPickable) ProcessInspect(PlayerController.PlayerInputs.FPS_Gameplay.Inspect.ReadValue<Vector2>());
     }
 
     public bool TryPickObject(Transform pickable)

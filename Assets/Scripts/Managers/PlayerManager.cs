@@ -22,27 +22,11 @@ public class PlayerManager : MonoBehaviour
     [FormerlySerializedAs("_playerHead")] [SerializeField] private Transform _playerHeadTransform;
     [FormerlySerializedAs("_playerHand")] [SerializeField] private Transform _playerHandTransform;
 
-    private static PlayerManager _instance;
-
-    public static PlayerManager Instance => _instance;
-
     public Transform PlayerHeadTransform => _playerHeadTransform;
 
     public Transform PlayerHandTransform => _playerHandTransform;
 
     public PlayerHand PlayerHand { get; private set; }
-    
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            _instance = this;
-        }
-    }
 
     private void Start()
     {

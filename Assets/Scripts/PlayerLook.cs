@@ -27,10 +27,10 @@ public class PlayerLook : PlayerComponent
     {
         _mainCameraTransform = Camera.main.transform;
         
-        InputManager.Instance.PlayerInputs.FPS_Gameplay.Interact.started += OnInteractAction;
+        PlayerController.PlayerInputs.FPS_Gameplay.Interact.started += OnInteractAction;
         
         // Setup look state machine
-        _activeLookState = new DefaultLookState(this);
+        _activeLookState = new DefaultLookState(_playerManager, this);
         _activeLookState.OnEnterState();
     }
 

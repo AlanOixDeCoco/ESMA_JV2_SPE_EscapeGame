@@ -38,9 +38,6 @@ public class PlayerHand : PlayerComponent
     // Rotation values
     private float _handRotation = 0;
     private float _pickableRotation = 0;
-    
-    // Drop/Throw
-    private bool _shouldThrow = false;
 
     public bool HoldPickable => _holdPickable; // Property --> .HasPickable
 
@@ -61,15 +58,13 @@ public class PlayerHand : PlayerComponent
 
     private void Start()
     {
-        InputManager.Instance.PlayerInputs.FPS_Gameplay.Throw.canceled += ProcessDropObject;
-        InputManager.Instance.PlayerInputs.FPS_Gameplay.Throw.performed += ProcessThrowObject;
-
-        //InputManager.Instance.PlayerInputs.FPS_Gameplay.Throw.performed += ThrowObject;
+        PlayerController.PlayerInputs.FPS_Gameplay.Throw.canceled += ProcessDropObject;
+        PlayerController.PlayerInputs.FPS_Gameplay.Throw.performed += ProcessThrowObject;
     }
 
     private void Update()
     {
-        if(HoldPickable && !_picking) ProcessRotation(InputManager.Instance.PlayerInputs.FPS_Gameplay.Inspect.ReadValue<Vector2>());
+        if(HoldPickable && !_picking) ProcessRotation(PlayerController.PlayerInputs.FPS_Gameplay.Inspect.ReadValue<Vector2>());
     }
 
     public bool TryPickObject(Transform pickableTransform)
@@ -121,9 +116,9 @@ public class PlayerHand : PlayerComponent
         yield return new WaitForEndOfFrame();
     }
 
-    public void DropObject(bool shouldThrow)
+    private void DropObject(bool shouldThrow)
     {
-        var dropVelocity = Vector3.zero;
+        Vector3 dropVelocity;
         if (shouldThrow)
         {
             dropVelocity = _playerManager.PlayerHeadTransform.forward * _throwVelocity;
@@ -145,18 +140,16 @@ public class PlayerHand : PlayerComponent
         _pickableTransform.gameObject.layer = _baseLayer;
 
         _pickableTransform = null;
-
-        _shouldThrow = false;
     }
 
-    public void ProcessDropObject(InputAction.CallbackContext context)
+    private void ProcessDropObject(InputAction.CallbackContext context)
     {
         if(_pickableTransform == null) return;
         
         DropObject(false);
     }
 
-    public void ProcessThrowObject(InputAction.CallbackContext context)
+    private void ProcessThrowObject(InputAction.CallbackContext context)
     {
         if(_pickableTransform == null) return;
         

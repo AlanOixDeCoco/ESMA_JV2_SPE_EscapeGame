@@ -15,17 +15,15 @@ public class DeprecatedPlayerLook : PlayerComponent
     private Pickable _pickable;
     
     private Transform _mainCameraTransform;
-    private InputManager _inputManager;
 
     private bool _aimAtInteractable = false, _aimAtPickable = false;
 
     private void Start()
     {
         _mainCameraTransform = Camera.main.transform;
-        _inputManager = InputManager.Instance;
         _playerManager = GetComponent<PlayerManager>();
         
-        _inputManager.PlayerInputs.FPS_Gameplay.Interact.started += OnInteractAction;
+        PlayerController.PlayerInputs.FPS_Gameplay.Interact.started += OnInteractAction;
     }
 
     private void Update()

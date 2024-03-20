@@ -8,13 +8,16 @@ public class FPSCamera : MonoBehaviour
 {
     private CinemachineVirtualCamera _virtualCamera;
     
-    private void Start()
+    private void Awake()
     {
         _virtualCamera = GetComponent<CinemachineVirtualCamera>();
+    }
 
-        _virtualCamera.Follow = PlayerManager.Instance.PlayerHeadTransform;
+    public void Setup(PlayerManager playerManager)
+    {
+        _virtualCamera.Follow = playerManager.PlayerHeadTransform;
         
         var povTransposer = _virtualCamera.GetCinemachineComponent<CinemachinePOV>();
-        povTransposer.m_HorizontalAxis.Value = PlayerManager.Instance.PlayerHeadTransform.eulerAngles.y;
+        povTransposer.m_HorizontalAxis.Value = playerManager.PlayerHeadTransform.eulerAngles.y;
     }
 }

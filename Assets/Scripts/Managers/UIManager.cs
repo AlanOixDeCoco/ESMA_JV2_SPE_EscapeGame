@@ -4,22 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum CrosshairModes
-{
-    Dot,
-    Interact,
-    CantInteract,
-    Pick,
-    CantPick
-}
-
-[Serializable]
-public class Crosshair
-{
-    public CrosshairModes _mode;
-    public Sprite _sprite;
-}
-
 public class UIManager : MonoBehaviour
 {
     [Header("Crosshair")] 

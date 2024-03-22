@@ -9,8 +9,7 @@ public class Interactable : MonoBehaviour
 {
     [FormerlySerializedAs("_interactableRequiredPickable")] [SerializeField] private Transform _requiredPickable;
     
-    [SerializeField] private UnityEvent<PlayerManager> _onInteract;
-    [SerializeField] private UnityEvent<PlayerManager, Pickable> _onPickableInteract;
+    [FormerlySerializedAs("_onPickableInteract")] [SerializeField] private UnityEvent<PlayerManager, Pickable> _onInteract;
 
     private bool _requirePickable;
 
@@ -21,21 +20,16 @@ public class Interactable : MonoBehaviour
         _requirePickable = _requiredPickable != null;
     }
 
-    public void Interact(PlayerManager playerManager)
+    public void Interact(PlayerManager playerManager, Pickable pickable)
     {
-        _onInteract.Invoke(playerManager);
-    }
-
-    public void PickableInteract(PlayerManager playerManager, Pickable pickable)
-    {
-        _onPickableInteract.Invoke(playerManager, pickable);
+        _onInteract.Invoke(playerManager, pickable);
     }
 
     public bool FitsInteraction(Transform pickable)
     {
         if (!_requirePickable) return true;
         if (pickable == null) return false;
-        else if (_requiredPickable.name == pickable.name) return true;
+        if (_requiredPickable.name == pickable.name) return true;
         return false;
     }
 }

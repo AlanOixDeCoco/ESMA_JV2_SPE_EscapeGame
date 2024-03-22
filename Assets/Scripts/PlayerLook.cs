@@ -16,12 +16,15 @@ public class PlayerLook : PlayerComponent
 
     private bool _aimingAtObject = false;
     private Transform _aimObject;
-    
     private Transform _mainCameraTransform;
+
+    private PlayerUI _playerUI;
 
     public bool AimingAtObject => _aimingAtObject;
 
     public Transform AimObject => _aimObject;
+
+    public PlayerUI PlayerUI => _playerUI;
 
     private void Start()
     {
@@ -49,6 +52,11 @@ public class PlayerLook : PlayerComponent
             );
 
         if (_aimingAtObject) _aimObject = hit.transform;
+    }
+
+    public void SetUIReference(PlayerUI playerUI)
+    {
+        _playerUI = playerUI;
     }
 
     public void SwitchLookState(LookState lookstate)

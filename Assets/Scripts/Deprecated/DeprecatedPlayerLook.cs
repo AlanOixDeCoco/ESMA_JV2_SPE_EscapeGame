@@ -48,7 +48,7 @@ public class DeprecatedPlayerLook : PlayerComponent
 
     private void OnInteractAction(InputAction.CallbackContext context)
     {
-        if(_aimAtInteractable) _interactable.Interact(_playerManager);
+        //if(_aimAtInteractable) _interactable.Interact(_playerManager);
 
         if (_aimAtPickable && _playerManager.TryGetComponent<DeprecatedPlayerInspect>(out var playerInspect))
         {

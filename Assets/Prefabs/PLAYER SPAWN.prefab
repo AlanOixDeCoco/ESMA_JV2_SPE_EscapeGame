@@ -13,7 +13,7 @@ GameObject:
   m_Layer: 0
   m_Name: PLAYER SPAWN
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4490100812900893537}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -44,7 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af18d40f43d143049be14e0ae1ef8393, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameplayTransform: {fileID: 0}
+  _uiTransform: {fileID: 0}
   _playerCharacterPrefab: {fileID: 6564272660554864364, guid: c8a679aa16b0ce14aac2e088b3d5625f,
     type: 3}
   _fpsCameraPrefab: {fileID: 5844383843546402430, guid: 239f5584b9a0daf458c586376537e9dc,
+    type: 3}
+  _playerUIPrefab: {fileID: 2809476959061790775, guid: 856063acd5f533743922ddf86db766e4,
     type: 3}

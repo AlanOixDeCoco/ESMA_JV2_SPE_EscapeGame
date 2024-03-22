@@ -180,8 +180,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8c77d56392d69a44b5a61a030baa7ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerHead: {fileID: 1789032653533144661}
-  _playerHand: {fileID: 2647192333811248796}
+  _playerHeadTransform: {fileID: 1789032653533144661}
+  _playerHandTransform: {fileID: 2647192333811248796}
 --- !u!114 &6173889179879739266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,7 +211,7 @@ MonoBehaviour:
   _rotationSpeed: 90
   _rotationOffset: -90
   _pickDuration: 0.1
-  _dropVelocity: 1.25
+  _throwVelocity: 10
   _selectedLayer: Selected
 --- !u!114 &4889982725303652894
 MonoBehaviour:

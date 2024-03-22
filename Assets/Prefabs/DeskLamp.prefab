@@ -12626,6 +12626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cf1ecb55751ad14882e0aea20888452, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _requiredPickable: {fileID: 0}
   _onInteract:
     m_PersistentCalls:
       m_Calls:
@@ -12641,6 +12642,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _onPickableInteract:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &525431115555519849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12669,6 +12673,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _onStateOn:
+    m_PersistentCalls:
+      m_Calls: []
+  _onStateOff:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &58257100301369570
 MonoBehaviour:
   m_ObjectHideFlags: 0

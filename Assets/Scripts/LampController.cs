@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+[RequireComponent(typeof(Light))]
 public class LampController : MonoBehaviour
 {
     [Header("Light Variation")]

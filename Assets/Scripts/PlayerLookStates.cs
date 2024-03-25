@@ -135,7 +135,7 @@ public class PickableLookState : LookState
         }
         
         // Manage picking possibility
-        if(_playerManager.PlayerHand.HoldPickable) UIManager.Instance.SetCrosshair(CrosshairModes.CantPick);
+        if(_playerManager.PlayerHand.HoldPickable) _playerLook.PlayerUI.SetCrosshair(CrosshairModes.CantPick);
         else _playerLook.PlayerUI.SetCrosshair(CrosshairModes.Pick);
     }
 

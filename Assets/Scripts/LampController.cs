@@ -19,8 +19,16 @@ public class LampController : MonoBehaviour
     {
         _light = GetComponent<Light>();
         _defaultLightIntensity = _light.intensity;
-        
+    }
+
+    private void OnEnable()
+    {
         StartCoroutine(VariateLight());
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
     }
 
     private IEnumerator VariateLight()

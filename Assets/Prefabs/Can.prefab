@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5127035282765793637}
   - component: {fileID: 5991421899195014068}
   - component: {fileID: 5607470199893968979}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Can
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5270411436142201183}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.3805937, y: 0, z: -3.3493285}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -156,6 +156,7 @@ MonoBehaviour:
   _onPick:
     m_PersistentCalls:
       m_Calls: []
+  _pickableTag: 
 --- !u!114 &5991421899195014068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,8 +174,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5607470199893968979}
         m_TargetAssemblyTypeName: AudioFeedback, Assembly-CSharp
-        m_MethodName: PlayRandomFeedbackClip
-        m_Mode: 1
+        m_MethodName: PlayCollisionFeedback
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -183,6 +184,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5607470199893968979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,3 +204,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ef152ec7a6594a84abaa3fb8bd4dbe37, type: 3}
   - {fileID: 8300000, guid: 477051f0574e2704f8941a831333f3d1, type: 3}
   - {fileID: 8300000, guid: b2c272629ad826b429ec61f0a77391b7, type: 3}
+  _audioMixerGroup: {fileID: 3157411521193916321, guid: 5d9366fe65d98924899ecbf787fc5ed3,
+    type: 2}
+  _collisionStrenghtThreshold: 1
+  _collisionMaxStrenght: 20
+  _maxVolume: 1

@@ -10,7 +10,11 @@ public class Pickable : MonoBehaviour
     [SerializeField] private UnityEvent<PlayerManager> _onInteract;
     [SerializeField] private UnityEvent<PlayerManager> _onPick;
 
+    [SerializeField] private string _pickableTag;
+
     private Rigidbody _rb;
+
+    public string PickableTag => _pickableTag;
 
     private void Start()
     {

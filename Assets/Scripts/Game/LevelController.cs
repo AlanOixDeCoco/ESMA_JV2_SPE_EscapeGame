@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour
 {
@@ -32,5 +33,10 @@ public class LevelController : MonoBehaviour
     public void Fail()
     {
         GameController.Instance.OnLevelFail();
+    }
+
+    public void DebugRestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
     }
 }

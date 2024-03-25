@@ -24,14 +24,14 @@ public class DeprecatedPlayerInspect : PlayerComponent
 
     private void Start()
     {
-        PlayerController.PlayerInputs.FPS_Gameplay.Drop.started += DropObject;
+        GameController.Instance.PlayerController.PlayerInputs.FPS_Gameplay.Drop.started += DropObject;
         
         _defaultHandRotation = _handTransform.localEulerAngles.x;
     }
 
     private void Update()
     {
-        if(_hasPickable) ProcessInspect(PlayerController.PlayerInputs.FPS_Gameplay.Inspect.ReadValue<Vector2>());
+        if(_hasPickable) ProcessInspect(GameController.Instance.PlayerController.PlayerInputs.FPS_Gameplay.Inspect.ReadValue<Vector2>());
     }
 
     public bool TryPickObject(Transform pickable)

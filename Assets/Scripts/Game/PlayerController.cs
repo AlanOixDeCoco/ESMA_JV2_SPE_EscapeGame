@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private static PlayerInputs _playerInputs;
-    public static PlayerInputs PlayerInputs => _playerInputs;
+    private PlayerInputs _playerInputs;
+    public PlayerInputs PlayerInputs => _playerInputs;
     
     private void Awake()
     {
         _playerInputs = new PlayerInputs();
+        _playerInputs.Enable();
     }
 
     private void OnEnable()

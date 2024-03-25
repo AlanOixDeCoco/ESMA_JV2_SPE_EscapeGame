@@ -58,13 +58,13 @@ public class PlayerHand : PlayerComponent
 
     private void Start()
     {
-        PlayerController.PlayerInputs.FPS_Gameplay.Throw.canceled += ProcessDropObject;
-        PlayerController.PlayerInputs.FPS_Gameplay.Throw.performed += ProcessThrowObject;
+        GameController.Instance.PlayerController.PlayerInputs.FPS_Gameplay.Throw.canceled += ProcessDropObject;
+        GameController.Instance.PlayerController.PlayerInputs.FPS_Gameplay.Throw.performed += ProcessThrowObject;
     }
 
     private void Update()
     {
-        if(HoldPickable && !_picking) ProcessRotation(PlayerController.PlayerInputs.FPS_Gameplay.Inspect.ReadValue<Vector2>());
+        if(HoldPickable && !_picking) ProcessRotation(GameController.Instance.PlayerController.PlayerInputs.FPS_Gameplay.Inspect.ReadValue<Vector2>());
     }
 
     public bool TryPickObject(Transform pickableTransform)

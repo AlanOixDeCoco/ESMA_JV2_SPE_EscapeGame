@@ -6,7 +6,8 @@ using UnityEngine.Events;
 
 public class CollisionHandler : MonoBehaviour
 {
-    [SerializeField] private UnityEvent _onCollisionEnter;
+    [SerializeField] private UnityEvent<Collision> _onCollisionEnter;
+    [SerializeField] private UnityEvent<Collider> _onTriggerEnter;
 
     private Rigidbody _rb;
 
@@ -17,6 +18,11 @@ public class CollisionHandler : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if(_rb.velocity.magnitude > 0.1f) _onCollisionEnter.Invoke();
+        _onCollisionEnter.Invoke(other);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        _onTriggerEnter.Invoke(other);
     }
 }

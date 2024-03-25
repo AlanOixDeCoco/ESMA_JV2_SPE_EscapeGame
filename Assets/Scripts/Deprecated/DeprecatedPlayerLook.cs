@@ -23,7 +23,7 @@ public class DeprecatedPlayerLook : PlayerComponent
         _mainCameraTransform = Camera.main.transform;
         _playerManager = GetComponent<PlayerManager>();
         
-        PlayerController.PlayerInputs.FPS_Gameplay.Interact.started += OnInteractAction;
+        GameController.Instance.PlayerController.PlayerInputs.FPS_Gameplay.Interact.started += OnInteractAction;
     }
 
     private void Update()

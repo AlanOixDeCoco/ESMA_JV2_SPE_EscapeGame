@@ -30,9 +30,9 @@ public class PlayerMovement : PlayerComponent
 
     void Update()
     {
-        ProcessMovement(PlayerController.PlayerInputs.FPS_Gameplay.Movement.ReadValue<Vector2>());
+        ProcessMovement(GameController.Instance.PlayerController.PlayerInputs.FPS_Gameplay.Movement.ReadValue<Vector2>());
 
-        ProcessCrouch(PlayerController.PlayerInputs.FPS_Gameplay.Crouch.ReadValue<float>());
+        ProcessCrouch(GameController.Instance.PlayerController.PlayerInputs.FPS_Gameplay.Crouch.ReadValue<float>());
 
         _characterController.SimpleMove(_playerVelocity);
     }

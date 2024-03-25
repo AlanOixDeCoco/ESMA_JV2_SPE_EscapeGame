@@ -16,7 +16,7 @@ public class GameController : MonoBehaviour
     [Header("Controllers references")]
     [SerializeField] private PlayerController _playerController;
     [SerializeField] private TimeController _timeController;
-    
+    public PlayerController PlayerController => _playerController;
     #endregion
 
     #region Levels
@@ -48,6 +48,11 @@ public class GameController : MonoBehaviour
         #endregion
         
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void Start()
+    {
+        _playerController = GetComponent<PlayerController>();
     }
 
     public void OnLevelReady(LevelController levelController)

@@ -2,11 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(LineRenderer))]
 public class LaserEmitter : MonoBehaviour
 {
-    [SerializeField] private LayerMask _layerMask;
+    [SerializeField] private UnityEvent _onPlayerContact;
     
     private LineRenderer _lineRenderer;
 
@@ -15,7 +16,7 @@ public class LaserEmitter : MonoBehaviour
         _lineRenderer = GetComponent<LineRenderer>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         UpdateLaser();
     }
@@ -34,15 +35,26 @@ public class LaserEmitter : MonoBehaviour
         {
             endLaser = true;
             var ray = new Ray(lastHitPoint, lastHitNormal);
-            if (Physics.Raycast(ray, out var raycastHit, 100f, _layerMask))
+            if (Physics.Raycast(ray, out var raycastHit, 100f))
             {
                 lastHitPoint = raycastHit.point;
                 hitPoints.Add(lastHitPoint);
                 
                 lastHitNormal = raycastHit.normal;
 
-                if (raycastHit.transform.TryGetComponent<LaserMirror>(out var laserMirror)) endLaser = false;
-                else if(raycastHit.transform.TryGetComponent<LaserReceiver>(out var laserReceiver)) laserReceiver.ReceiveLaser();
+                if (raycastHit.transform.TryGetComponent<LaserMirror>(out var laserMirror))
+                {
+                    endLaser = false;
+                }
+                if (raycastHit.transform.TryGetComponent<LaserReceiver>(out var laserReceiver))
+                {
+                    laserReceiver.ReceiveLaser();
+                }
+
+                if (raycastHit.transform.CompareTag("Player"))
+                {
+                    _onPlayerContact.Invoke();
+                }
             }
         }
 

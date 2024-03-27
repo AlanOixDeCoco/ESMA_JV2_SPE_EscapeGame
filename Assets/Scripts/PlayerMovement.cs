@@ -91,7 +91,6 @@ public class PlayerMovement : PlayerComponent
         if (_crawling)
         {
             _crawling = false;
-            _crouching = false;
             return;
         }
         _crouching = !_crouching;

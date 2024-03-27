@@ -78,7 +78,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""id"": ""f358a272-298f-4ef9-b8a9-fb83bd5ca6aa"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press"",
+                    ""interactions"": ""Press(behavior=1)"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -87,7 +87,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""id"": ""ecf1c877-c5c5-4aef-933c-2994af08f05a"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": ""Hold(duration=0.2)"",
                     ""initialStateCheck"": false
                 },
                 {

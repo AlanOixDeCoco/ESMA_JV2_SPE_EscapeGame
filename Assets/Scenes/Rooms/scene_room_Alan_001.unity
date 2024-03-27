@@ -24010,8 +24010,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.20439702, y: 0.071405254, z: 0.09607375}
-  m_Center: {x: 0.0006005764, y: 0, z: -1.02131845e-16}
+  m_Size: {x: 0.25007555, y: 0.063997775, z: 0.09607375}
+  m_Center: {x: 0.00028553617, y: -0.005248517, z: 3.4038154e-11}
 --- !u!33 &3469287837550954996
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -24198,7 +24198,7 @@ PrefabInstance:
     - target: {fileID: 1725416911162501964, guid: e22c1f0faa295bb4aabaa86c6059d8b1,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2585587590447642968, guid: e22c1f0faa295bb4aabaa86c6059d8b1,
         type: 3}

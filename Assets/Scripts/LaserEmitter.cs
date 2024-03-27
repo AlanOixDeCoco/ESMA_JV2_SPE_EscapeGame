@@ -42,6 +42,7 @@ public class LaserEmitter : MonoBehaviour
                 lastHitNormal = raycastHit.normal;
 
                 if (raycastHit.transform.TryGetComponent<LaserMirror>(out var laserMirror)) endLaser = false;
+                else if(raycastHit.transform.TryGetComponent<LaserReceiver>(out var laserReceiver)) laserReceiver.ReceiveLaser();
             }
         }
 

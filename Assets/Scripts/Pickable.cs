@@ -16,6 +16,14 @@ public class Pickable : MonoBehaviour
 
     public string PickableTag => _pickableTag;
 
+    private void Awake()
+    {
+        if (TryGetComponent<MeshCollider>(out var meshCollider))
+        {
+            meshCollider.convex = true;
+        }
+    }
+
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();

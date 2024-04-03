@@ -7,8 +7,6 @@ public class KeypadController : MonoBehaviour
     [SerializeField] private string _rightSequence = "0000";
 
     [SerializeField] private UnityEvent _onRightSequence, _onWrongSequence;
-
-    [SerializeField] private TextMeshProUGUI _sequenceDisplay;
     
     private string _currentSequence;
 
@@ -20,14 +18,13 @@ public class KeypadController : MonoBehaviour
     private void ResetSequence()
     {
         _currentSequence = "";
-        if (_sequenceDisplay != null) _sequenceDisplay.text = _currentSequence;
     }
 
     public void AddToSequence(string fragment)
     {
-        _currentSequence += fragment;
+        if(!enabled) return;
         
-        if (_sequenceDisplay != null) _sequenceDisplay.text = _currentSequence;
+        _currentSequence += fragment;
         
         if (_currentSequence.Length >= _rightSequence.Length)
         {

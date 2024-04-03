@@ -22,6 +22,8 @@ public class Pickable : MonoBehaviour
         {
             meshCollider.convex = true;
         }
+
+        gameObject.layer = LayerMask.NameToLayer("Pickable");
     }
 
     private void Start()

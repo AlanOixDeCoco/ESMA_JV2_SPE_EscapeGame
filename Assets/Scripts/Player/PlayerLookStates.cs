@@ -50,7 +50,7 @@ public class DefaultLookState : LookState
 
     public override void OnInteract()
     {
-        Debug.Log("Nothing to interact with!");
+        return;
     }
 }
 

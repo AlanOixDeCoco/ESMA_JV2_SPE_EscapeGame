@@ -167,4 +167,11 @@ public class PlayerHand : PlayerComponent
         _handRotation = Mathf.Clamp(_handRotation, -160f + _rotationOffset, 160 + _rotationOffset);
         _pickableRotation = Mathf.Clamp(_pickableRotation, -160f, 160);
     }
+
+    public void ConsumePickable()
+    {
+        _holdPickable = false;
+        Destroy(_pickableTransform.gameObject);
+        _pickableTransform = null;
+    }
 }

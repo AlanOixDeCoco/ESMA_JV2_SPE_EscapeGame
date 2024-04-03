@@ -8,12 +8,15 @@ using UnityEngine.Serialization;
 public class Interactable : MonoBehaviour
 {
     [FormerlySerializedAs("_interactableRequiredPickable")] [SerializeField] private Transform _requiredPickable;
+    [SerializeField] private bool _consumePickable = false;
     
     [FormerlySerializedAs("_onPickableInteract")] [SerializeField] private UnityEvent<PlayerManager, Pickable> _onInteract;
 
     private bool _requirePickable;
 
     public bool RequirePickable => _requirePickable;
+
+    public bool ConsumePickable => _consumePickable;
 
     private void Start()
     {

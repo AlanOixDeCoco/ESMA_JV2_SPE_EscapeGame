@@ -78,7 +78,16 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""id"": ""f358a272-298f-4ef9-b8a9-fb83bd5ca6aa"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Crawl"",
+                    ""type"": ""Button"",
+                    ""id"": ""ecf1c877-c5c5-4aef-933c-2994af08f05a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold(duration=0.2)"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -355,6 +364,28 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""Throw"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""762f5c72-45f0-46c7-9abf-52aafc85efb8"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Crawl"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cbc059a6-1ad0-452e-b6fd-682600f6772b"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Crawl"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -397,6 +428,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_FPS_Gameplay_Inspect = m_FPS_Gameplay.FindAction("Inspect", throwIfNotFound: true);
         m_FPS_Gameplay_Drop = m_FPS_Gameplay.FindAction("Drop", throwIfNotFound: true);
         m_FPS_Gameplay_Crouch = m_FPS_Gameplay.FindAction("Crouch", throwIfNotFound: true);
+        m_FPS_Gameplay_Crawl = m_FPS_Gameplay.FindAction("Crawl", throwIfNotFound: true);
         m_FPS_Gameplay_Throw = m_FPS_Gameplay.FindAction("Throw", throwIfNotFound: true);
         // FPS_UI
         m_FPS_UI = asset.FindActionMap("FPS_UI", throwIfNotFound: true);
@@ -468,6 +500,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_FPS_Gameplay_Inspect;
     private readonly InputAction m_FPS_Gameplay_Drop;
     private readonly InputAction m_FPS_Gameplay_Crouch;
+    private readonly InputAction m_FPS_Gameplay_Crawl;
     private readonly InputAction m_FPS_Gameplay_Throw;
     public struct FPS_GameplayActions
     {
@@ -479,6 +512,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         public InputAction @Inspect => m_Wrapper.m_FPS_Gameplay_Inspect;
         public InputAction @Drop => m_Wrapper.m_FPS_Gameplay_Drop;
         public InputAction @Crouch => m_Wrapper.m_FPS_Gameplay_Crouch;
+        public InputAction @Crawl => m_Wrapper.m_FPS_Gameplay_Crawl;
         public InputAction @Throw => m_Wrapper.m_FPS_Gameplay_Throw;
         public InputActionMap Get() { return m_Wrapper.m_FPS_Gameplay; }
         public void Enable() { Get().Enable(); }
@@ -507,6 +541,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Crouch.started += instance.OnCrouch;
             @Crouch.performed += instance.OnCrouch;
             @Crouch.canceled += instance.OnCrouch;
+            @Crawl.started += instance.OnCrawl;
+            @Crawl.performed += instance.OnCrawl;
+            @Crawl.canceled += instance.OnCrawl;
             @Throw.started += instance.OnThrow;
             @Throw.performed += instance.OnThrow;
             @Throw.canceled += instance.OnThrow;
@@ -532,6 +569,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Crouch.started -= instance.OnCrouch;
             @Crouch.performed -= instance.OnCrouch;
             @Crouch.canceled -= instance.OnCrouch;
+            @Crawl.started -= instance.OnCrawl;
+            @Crawl.performed -= instance.OnCrawl;
+            @Crawl.canceled -= instance.OnCrawl;
             @Throw.started -= instance.OnThrow;
             @Throw.performed -= instance.OnThrow;
             @Throw.canceled -= instance.OnThrow;
@@ -606,6 +646,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         void OnInspect(InputAction.CallbackContext context);
         void OnDrop(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
+        void OnCrawl(InputAction.CallbackContext context);
         void OnThrow(InputAction.CallbackContext context);
     }
     public interface IFPS_UIActions

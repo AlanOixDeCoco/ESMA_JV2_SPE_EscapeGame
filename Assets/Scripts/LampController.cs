@@ -39,6 +39,5 @@ public class LampController : MonoBehaviour
             if(_enableVariation) _light.intensity = _defaultLightIntensity + Random.Range(-_variationStrength/2, _variationStrength/2);
             yield return new WaitForEndOfFrame();
         }
-        yield return new WaitForEndOfFrame();
     }
 }

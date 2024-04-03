@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PropStateManager : MonoBehaviour
+public class StateManager : MonoBehaviour
 {
     [Header("State")]
     [SerializeField] private bool _defaultState = false;

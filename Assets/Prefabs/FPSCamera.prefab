@@ -77,13 +77,13 @@ MonoBehaviour:
     Value: 0
     m_SpeedMode: 1
     m_MaxSpeed: 1
-    m_AccelTime: 0.1
-    m_DecelTime: 0.1
+    m_AccelTime: 0
+    m_DecelTime: 0
     m_InputAxisName: 
     m_InputAxisValue: 0
     m_InvertInput: 1
-    m_MinValue: -70
-    m_MaxValue: 70
+    m_MinValue: -80
+    m_MaxValue: 80
     m_Wrap: 0
     m_Recentering:
       m_enabled: 0
@@ -101,8 +101,8 @@ MonoBehaviour:
     Value: 0
     m_SpeedMode: 1
     m_MaxSpeed: 1
-    m_AccelTime: 0.1
-    m_DecelTime: 0.1
+    m_AccelTime: 0
+    m_DecelTime: 0
     m_InputAxisName: 
     m_InputAxisValue: 0
     m_InvertInput: 0
@@ -150,6 +150,7 @@ GameObject:
   - component: {fileID: 5612318168543255213}
   - component: {fileID: 1769350101471489435}
   - component: {fileID: 2528719399364578968}
+  - component: {fileID: 3946267131714732305}
   m_Layer: 0
   m_Name: FPSCamera
   m_TagString: Untagged
@@ -165,7 +166,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5844383843546402430}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -228,3 +229,15 @@ MonoBehaviour:
   AutoEnableInputs: 1
   XYAxis: {fileID: -8188983933687734390, guid: 8942ce6e2cd1f8a429391693b1c6df87, type: 3}
   ZAxis: {fileID: 0}
+--- !u!114 &3946267131714732305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5844383843546402430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b77f0ab14524c0246bd04d31d24661cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

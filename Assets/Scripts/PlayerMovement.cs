@@ -7,27 +7,32 @@ using UnityEngine;
 public class PlayerMovement : PlayerComponent
 {
     [SerializeField] private float _playerSpeed = 2.0f;
+    [SerializeField] private Vector3 _crouchOffset = new (0, -0.5f, 0);
 
     private CharacterController _characterController;
     private Vector3 _playerVelocity;
     private bool _grounded;
-
-    private InputManager _inputManager;
+    
     private Transform _mainCameraTransform;
+
+    private Vector3 _headPosition;
 
     private void Start()
     {
         _characterController = GetComponent<CharacterController>();
-        _inputManager = InputManager.Instance;
         _mainCameraTransform = Camera.main.transform;
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        _headPosition = _playerManager.PlayerHeadTransform.localPosition;
     }
 
     void Update()
     {
-        ProcessMovement(_inputManager.PlayerInputs.FPS_Gameplay.Movement.ReadValue<Vector2>());
+        ProcessMovement(PlayerController.PlayerInputs.FPS_Gameplay.Movement.ReadValue<Vector2>());
+
+        ProcessCrouch(PlayerController.PlayerInputs.FPS_Gameplay.Crouch.ReadValue<float>());
 
         _characterController.SimpleMove(_playerVelocity);
     }
@@ -49,5 +54,10 @@ public class PlayerMovement : PlayerComponent
 
         _playerVelocity.x = move.x;
         _playerVelocity.z = move.z;
+    }
+
+    private void ProcessCrouch(float input)
+    {
+        _playerManager.PlayerHeadTransform.localPosition = Vector3.Lerp(_playerManager.PlayerHeadTransform.localPosition, _headPosition + ((int)input * _crouchOffset), Time.deltaTime * 10f);
     }
 }

@@ -37,15 +37,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Jump"",
-                    ""type"": ""Button"",
-                    ""id"": ""f61e55eb-d323-4c82-8074-e29178cd1933"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Interact"",
                     ""type"": ""Button"",
                     ""id"": ""1f4ffde7-09c4-4da4-8df5-3b1f2735ab03"",
@@ -64,18 +55,36 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""RotateLeft"",
-                    ""type"": ""Button"",
+                    ""name"": ""Inspect"",
+                    ""type"": ""Value"",
                     ""id"": ""d051f827-d616-4f1a-9a99-f2f812bcd551"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Drop"",
+                    ""type"": ""Button"",
+                    ""id"": ""1eb2708a-4b66-409c-8e98-632c575845c3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Crouch"",
+                    ""type"": ""Button"",
+                    ""id"": ""f358a272-298f-4ef9-b8a9-fb83bd5ca6aa"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""RotateRight"",
+                    ""name"": ""Throw"",
                     ""type"": ""Button"",
-                    ""id"": ""491acc15-912f-46a4-9714-930db9643aca"",
+                    ""id"": ""81330acf-068c-449b-9259-007ef4085d6c"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -151,17 +160,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""1da6816d-c225-4190-babd-af9e21417840"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""ea71170b-f4ee-4650-b5b3-5005679d95e7"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
@@ -174,6 +172,17 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""4a783f67-c2f7-49a8-87d7-a334006f573a"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7b50a103-dafe-4ec0-a967-88de8c466d0b"",
                     ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -216,46 +225,134 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""d9f2d0ac-9d2f-4757-867b-7bd43e931574"",
+                    ""name"": ""Keyboard"",
+                    ""id"": ""46dd2be9-8cf6-4e39-8bed-2192d95b8f71"",
+                    ""path"": ""2DVector(mode=2)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inspect"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""e95000d2-7659-44c2-b080-201cdf26fec3"",
+                    ""path"": ""<Mouse>/scroll/up"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=0.1)"",
+                    ""groups"": """",
+                    ""action"": ""Inspect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""6fcadbf3-641c-4229-8b57-765e2c16ea0c"",
+                    ""path"": ""<Mouse>/scroll/down"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=0.1)"",
+                    ""groups"": """",
+                    ""action"": ""Inspect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""4fbc9229-8d2f-478d-9fce-4532f8d8d276"",
                     ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RotateLeft"",
+                    ""action"": ""Inspect"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": false
+                    ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""790db19c-03d6-4ff6-9d9a-e3166dea1743"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""RotateLeft"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3ab068c6-c84c-4e5b-bab7-e75460a85dc4"",
+                    ""name"": ""right"",
+                    ""id"": ""1b9021ac-6e2a-4f7d-b5d1-29dfc72c5e06"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RotateRight"",
+                    ""action"": ""Inspect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ecdafb0c-3f86-434b-ac61-5649f474ba68"",
+                    ""path"": ""<Gamepad>/dpad"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inspect"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""d22f5613-aca7-4bd3-95ce-5ce59de5c515"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""id"": ""dfadc1cc-f443-4474-8090-f2ee0e332a70"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RotateRight"",
+                    ""action"": ""Drop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ff16d653-2c6f-4e48-a833-d7371fb46e69"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Drop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c6001065-536b-46a3-b06f-7979e77c16b7"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Drop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3f0632bd-3005-4b1d-8103-c3242697044e"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eb0263d0-21d2-4f47-a01f-896c9dd96de7"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a7f62dbf-c575-481c-90fc-fc7ea0f9fb5f"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Throw"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -295,11 +392,12 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         // FPS_Gameplay
         m_FPS_Gameplay = asset.FindActionMap("FPS_Gameplay", throwIfNotFound: true);
         m_FPS_Gameplay_Movement = m_FPS_Gameplay.FindAction("Movement", throwIfNotFound: true);
-        m_FPS_Gameplay_Jump = m_FPS_Gameplay.FindAction("Jump", throwIfNotFound: true);
         m_FPS_Gameplay_Interact = m_FPS_Gameplay.FindAction("Interact", throwIfNotFound: true);
         m_FPS_Gameplay_Look = m_FPS_Gameplay.FindAction("Look", throwIfNotFound: true);
-        m_FPS_Gameplay_RotateLeft = m_FPS_Gameplay.FindAction("RotateLeft", throwIfNotFound: true);
-        m_FPS_Gameplay_RotateRight = m_FPS_Gameplay.FindAction("RotateRight", throwIfNotFound: true);
+        m_FPS_Gameplay_Inspect = m_FPS_Gameplay.FindAction("Inspect", throwIfNotFound: true);
+        m_FPS_Gameplay_Drop = m_FPS_Gameplay.FindAction("Drop", throwIfNotFound: true);
+        m_FPS_Gameplay_Crouch = m_FPS_Gameplay.FindAction("Crouch", throwIfNotFound: true);
+        m_FPS_Gameplay_Throw = m_FPS_Gameplay.FindAction("Throw", throwIfNotFound: true);
         // FPS_UI
         m_FPS_UI = asset.FindActionMap("FPS_UI", throwIfNotFound: true);
         m_FPS_UI_Pause = m_FPS_UI.FindAction("Pause", throwIfNotFound: true);
@@ -365,21 +463,23 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_FPS_Gameplay;
     private List<IFPS_GameplayActions> m_FPS_GameplayActionsCallbackInterfaces = new List<IFPS_GameplayActions>();
     private readonly InputAction m_FPS_Gameplay_Movement;
-    private readonly InputAction m_FPS_Gameplay_Jump;
     private readonly InputAction m_FPS_Gameplay_Interact;
     private readonly InputAction m_FPS_Gameplay_Look;
-    private readonly InputAction m_FPS_Gameplay_RotateLeft;
-    private readonly InputAction m_FPS_Gameplay_RotateRight;
+    private readonly InputAction m_FPS_Gameplay_Inspect;
+    private readonly InputAction m_FPS_Gameplay_Drop;
+    private readonly InputAction m_FPS_Gameplay_Crouch;
+    private readonly InputAction m_FPS_Gameplay_Throw;
     public struct FPS_GameplayActions
     {
         private @PlayerInputs m_Wrapper;
         public FPS_GameplayActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_FPS_Gameplay_Movement;
-        public InputAction @Jump => m_Wrapper.m_FPS_Gameplay_Jump;
         public InputAction @Interact => m_Wrapper.m_FPS_Gameplay_Interact;
         public InputAction @Look => m_Wrapper.m_FPS_Gameplay_Look;
-        public InputAction @RotateLeft => m_Wrapper.m_FPS_Gameplay_RotateLeft;
-        public InputAction @RotateRight => m_Wrapper.m_FPS_Gameplay_RotateRight;
+        public InputAction @Inspect => m_Wrapper.m_FPS_Gameplay_Inspect;
+        public InputAction @Drop => m_Wrapper.m_FPS_Gameplay_Drop;
+        public InputAction @Crouch => m_Wrapper.m_FPS_Gameplay_Crouch;
+        public InputAction @Throw => m_Wrapper.m_FPS_Gameplay_Throw;
         public InputActionMap Get() { return m_Wrapper.m_FPS_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -392,21 +492,24 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
-            @Jump.started += instance.OnJump;
-            @Jump.performed += instance.OnJump;
-            @Jump.canceled += instance.OnJump;
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
             @Look.started += instance.OnLook;
             @Look.performed += instance.OnLook;
             @Look.canceled += instance.OnLook;
-            @RotateLeft.started += instance.OnRotateLeft;
-            @RotateLeft.performed += instance.OnRotateLeft;
-            @RotateLeft.canceled += instance.OnRotateLeft;
-            @RotateRight.started += instance.OnRotateRight;
-            @RotateRight.performed += instance.OnRotateRight;
-            @RotateRight.canceled += instance.OnRotateRight;
+            @Inspect.started += instance.OnInspect;
+            @Inspect.performed += instance.OnInspect;
+            @Inspect.canceled += instance.OnInspect;
+            @Drop.started += instance.OnDrop;
+            @Drop.performed += instance.OnDrop;
+            @Drop.canceled += instance.OnDrop;
+            @Crouch.started += instance.OnCrouch;
+            @Crouch.performed += instance.OnCrouch;
+            @Crouch.canceled += instance.OnCrouch;
+            @Throw.started += instance.OnThrow;
+            @Throw.performed += instance.OnThrow;
+            @Throw.canceled += instance.OnThrow;
         }
 
         private void UnregisterCallbacks(IFPS_GameplayActions instance)
@@ -414,21 +517,24 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
-            @Jump.started -= instance.OnJump;
-            @Jump.performed -= instance.OnJump;
-            @Jump.canceled -= instance.OnJump;
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
             @Look.started -= instance.OnLook;
             @Look.performed -= instance.OnLook;
             @Look.canceled -= instance.OnLook;
-            @RotateLeft.started -= instance.OnRotateLeft;
-            @RotateLeft.performed -= instance.OnRotateLeft;
-            @RotateLeft.canceled -= instance.OnRotateLeft;
-            @RotateRight.started -= instance.OnRotateRight;
-            @RotateRight.performed -= instance.OnRotateRight;
-            @RotateRight.canceled -= instance.OnRotateRight;
+            @Inspect.started -= instance.OnInspect;
+            @Inspect.performed -= instance.OnInspect;
+            @Inspect.canceled -= instance.OnInspect;
+            @Drop.started -= instance.OnDrop;
+            @Drop.performed -= instance.OnDrop;
+            @Drop.canceled -= instance.OnDrop;
+            @Crouch.started -= instance.OnCrouch;
+            @Crouch.performed -= instance.OnCrouch;
+            @Crouch.canceled -= instance.OnCrouch;
+            @Throw.started -= instance.OnThrow;
+            @Throw.performed -= instance.OnThrow;
+            @Throw.canceled -= instance.OnThrow;
         }
 
         public void RemoveCallbacks(IFPS_GameplayActions instance)
@@ -495,11 +601,12 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     public interface IFPS_GameplayActions
     {
         void OnMovement(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
-        void OnRotateLeft(InputAction.CallbackContext context);
-        void OnRotateRight(InputAction.CallbackContext context);
+        void OnInspect(InputAction.CallbackContext context);
+        void OnDrop(InputAction.CallbackContext context);
+        void OnCrouch(InputAction.CallbackContext context);
+        void OnThrow(InputAction.CallbackContext context);
     }
     public interface IFPS_UIActions
     {

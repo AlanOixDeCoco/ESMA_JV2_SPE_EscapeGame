@@ -1,22 +1,35 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class Interactable : MonoBehaviour
 {
-    [SerializeField] private UnityEvent<PlayerManager> _onInteract;
+    [FormerlySerializedAs("_interactableRequiredPickable")] [SerializeField] private Transform _requiredPickable;
     
-    private PlayerManager _playerManager;
+    [FormerlySerializedAs("_onPickableInteract")] [SerializeField] private UnityEvent<PlayerManager, Pickable> _onInteract;
 
-    public void OnAim(PlayerManager playerManager)
+    private bool _requirePickable;
+
+    public bool RequirePickable => _requirePickable;
+
+    private void Start()
     {
-        _playerManager = playerManager;
-        UIManager.Instance.SetCrosshair(CrosshairModes.Interact);
+        _requirePickable = _requiredPickable != null;
     }
-    
-    public void OnInteract()
+
+    public void Interact(PlayerManager playerManager, Pickable pickable)
     {
-        _onInteract.Invoke(_playerManager);
+        _onInteract.Invoke(playerManager, pickable);
+    }
+
+    public bool FitsInteraction(Transform pickable)
+    {
+        if (!_requirePickable) return true;
+        if (pickable == null) return false;
+        if (_requiredPickable.name == pickable.name) return true;
+        return false;
     }
 }

@@ -7,6 +7,9 @@ using UnityEngine.Events;
 [RequireComponent(typeof(LineRenderer))]
 public class LaserEmitter : MonoBehaviour
 {
+    [Header("Laser properties")] 
+    [SerializeField] private byte _maxLaserBouces = 10;
+    
     [SerializeField] private UnityEvent _onPlayerContact;
     
     private LineRenderer _lineRenderer;
@@ -29,11 +32,12 @@ public class LaserEmitter : MonoBehaviour
         var lastHitNormal = transform.forward;
         
         hitPoints.Add(lastHitPoint);
-        
-        var endLaser = false;
-        while (!endLaser)
+
+        int laserBouces = 0;
+        while (laserBouces < _maxLaserBouces)
         {
-            endLaser = true;
+            bool endLaser = true;
+            
             var ray = new Ray(lastHitPoint, lastHitNormal);
             if (Physics.Raycast(ray, out var raycastHit, 100f))
             {
@@ -55,6 +59,10 @@ public class LaserEmitter : MonoBehaviour
                 {
                     _onPlayerContact.Invoke();
                 }
+
+                if (endLaser) break;
+
+                laserBouces++;
             }
         }
 

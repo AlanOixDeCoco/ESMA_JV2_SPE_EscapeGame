@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Deprecated/scene_Start.unity
+    path: Assets/Scenes/scene_Start.unity
     guid: 615ea243efe2f144daab3d1f906f9bdb
   - enabled: 1
     path: Assets/Scenes/Deprecated/scene_Tutorial.unity

@@ -19,12 +19,17 @@ public class GameController : MonoBehaviour
     public PlayerController PlayerController => _playerController;
     #endregion
 
-    #region Levels
+    #region Scenes
 
-    [Header("Levels")]
-    [SerializeField] private string[] _levels;
+    [Header("Scenes")] 
+    [SerializeField] private string _mainMenuScene;
+    [SerializeField] private string _introductionScene;
+    [SerializeField] private string _firstLevelScene;
+    [SerializeField] private string _transitionScene;
+    [SerializeField] private string[] _beginnerLevelsScenes;
+    [SerializeField] private string[] _advancedLevelsScenes;
 
-    private LevelController _activeLevelController;
+    private SceneController _activeSceneController;
 
     #endregion
 
@@ -55,9 +60,9 @@ public class GameController : MonoBehaviour
         _playerController = GetComponent<PlayerController>();
     }
 
-    public void OnLevelReady(LevelController levelController)
+    public void OnLevelReady(SceneController sceneController)
     {
-        _activeLevelController = levelController;
+        _activeSceneController = sceneController;
         _timeController.Resume();
     }
 

@@ -3812,7 +3812,12 @@ PrefabInstance:
       value: staticMesh_prop_ElectricBox_door
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7503526307140469533, guid: ef812982871d8bf4f84c1380860b77ca, type: 3}
+    - {fileID: -1058976313529914444, guid: ef812982871d8bf4f84c1380860b77ca, type: 3}
+    - {fileID: -770228499288801478, guid: ef812982871d8bf4f84c1380860b77ca, type: 3}
+    - {fileID: -5790743888752385542, guid: ef812982871d8bf4f84c1380860b77ca, type: 3}
+    - {fileID: -8513424388201257645, guid: ef812982871d8bf4f84c1380860b77ca, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef812982871d8bf4f84c1380860b77ca, type: 3}

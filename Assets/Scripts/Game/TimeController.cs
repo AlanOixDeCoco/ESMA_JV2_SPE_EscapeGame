@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class TimeController : MonoBehaviour
 {
-    [SerializeField] private bool _isPaused = false;
+    private bool _isPaused = true;
     
     private float _time;
 
     private void Start()
     {
-        _time = 0f;
+        ResetTime();
     }
 
     private void FixedUpdate()
@@ -24,5 +24,17 @@ public class TimeController : MonoBehaviour
     public void Resume()
     {
         _isPaused = false;
+    }
+
+    public void ResetTime()
+    {
+        _isPaused = true;
+        _time = 0f;
+    }
+
+    public float GetRemainingTime()
+    {
+        var gameDuration = GameController.Instance.GameDuration * 60;
+        return gameDuration - _time;
     }
 }

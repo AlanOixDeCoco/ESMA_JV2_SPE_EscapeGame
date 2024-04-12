@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1164799184107541378}
   - component: {fileID: 6999814644630520470}
+  - component: {fileID: 8280026681971158896}
   m_Layer: 0
   m_Name: === LEVEL CONTROLLER ===
   m_TagString: Untagged
@@ -44,5 +45,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48099a431b4239c43a50665494ce820e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameControllerPrefab: {fileID: 9187977054917140798, guid: d6698fa3519d73243a2e70564669c7f9,
-    type: 3}
+  _onLoad:
+    m_PersistentCalls:
+      m_Calls: []
+  _onStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8280026681971158896}
+        m_TargetAssemblyTypeName: TimeControllerBridge, Assembly-CSharp
+        m_MethodName: Resume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8280026681971158896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4491098202408011927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44267a53430d7c6498a4b30836c37d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

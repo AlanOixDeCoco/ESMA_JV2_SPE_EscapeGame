@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9187977054917140798}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -48,7 +48,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerController: {fileID: 4834515737802293791}
   _timeController: {fileID: 5534973708348792237}
-  _levels: []
+  _mainMenuScene: scene_MainMenu
+  _introductionScene: scene_Introduction
+  _firstLevelScene: scene_room_FirstBox
+  _beginnerLevelsScenes:
+  - scene_room_Alan_001
+  - scene_room_Alan_001
+  - scene_room_Alan_001
+  _advancedLevelsScenes:
+  - scene_room_Alan_001
+  - scene_room_Alan_001
+  - scene_room_Alan_001
   _gameDuration: 10
 --- !u!114 &4834515737802293791
 MonoBehaviour:
@@ -74,4 +84,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d2f66832d9dda4db8fc3d81ddd77f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isPaused: 0

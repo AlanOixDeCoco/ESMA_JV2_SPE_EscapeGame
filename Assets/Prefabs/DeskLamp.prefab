@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 5017982690934033678}
   - component: {fileID: 8359380356094427735}
   - component: {fileID: 525431115555519849}
-  - component: {fileID: 58257100301369570}
   m_Layer: 0
   m_Name: DeskLamp
   m_TagString: Untagged
@@ -12642,9 +12641,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _onPickableInteract:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &525431115555519849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12679,21 +12675,6 @@ MonoBehaviour:
   _onStateOff:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &58257100301369570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1422181218892962710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb7155c46c161314cb0ccc6892958a2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enableVariation: 1
-  _variationFrequency: 1
-  _variationStrength: 0.1
 --- !u!1 &6963011676236622804
 GameObject:
   m_ObjectHideFlags: 0
@@ -12705,6 +12686,7 @@ GameObject:
   - component: {fileID: 1718428635353823265}
   - component: {fileID: 5936845602163248525}
   - component: {fileID: 4767911787035229426}
+  - component: {fileID: 6059895163666162163}
   m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
@@ -12812,3 +12794,18 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!114 &6059895163666162163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6963011676236622804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb7155c46c161314cb0ccc6892958a2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enableVariation: 1
+  _variationFrequency: 0.1
+  _variationStrength: 0.5

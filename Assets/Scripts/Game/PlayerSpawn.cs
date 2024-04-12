@@ -17,7 +17,7 @@ public class PlayerSpawn : MonoBehaviour
     
     private PlayerManager _playerManager;
 
-    public void SpawnPlayer()
+    public void Start()
     {
         // Instanciate player
         var player = Instantiate(_playerCharacterPrefab, transform.position, transform.rotation);

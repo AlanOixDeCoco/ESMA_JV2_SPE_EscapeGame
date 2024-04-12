@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+[RequireComponent(typeof(Light))]
 public class LampController : MonoBehaviour
 {
     [Header("Light Variation")]
@@ -16,10 +17,18 @@ public class LampController : MonoBehaviour
     
     private void Awake()
     {
-        _light = GetComponentInChildren<Light>();
+        _light = GetComponent<Light>();
         _defaultLightIntensity = _light.intensity;
-        
+    }
+
+    private void OnEnable()
+    {
         StartCoroutine(VariateLight());
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
     }
 
     private IEnumerator VariateLight()
@@ -28,6 +37,7 @@ public class LampController : MonoBehaviour
         {
             yield return new WaitForSeconds(Random.Range(0, _variationFrequency));
             if(_enableVariation) _light.intensity = _defaultLightIntensity + Random.Range(-_variationStrength/2, _variationStrength/2);
+            yield return new WaitForEndOfFrame();
         }
     }
 }

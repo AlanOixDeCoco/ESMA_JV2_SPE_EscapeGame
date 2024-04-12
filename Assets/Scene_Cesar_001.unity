@@ -11981,7 +11981,7 @@ PrefabInstance:
     - target: {fileID: 2043670746053500479, guid: dacae9fba344ef24da6497ed48021780,
         type: 3}
       propertyPath: m_Name
-      value: Electric paenl_01
+      value: Electric pannel_01
       objectReference: {fileID: 0}
     - target: {fileID: 6235693924714669297, guid: dacae9fba344ef24da6497ed48021780,
         type: 3}
@@ -12036,7 +12036,15 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2043670746053500479, guid: dacae9fba344ef24da6497ed48021780,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1963452912}
+    - targetCorrespondingSourceObject: {fileID: 2043670746053500479, guid: dacae9fba344ef24da6497ed48021780,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1963452913}
   m_SourcePrefab: {fileID: 100100000, guid: dacae9fba344ef24da6497ed48021780, type: 3}
 --- !u!43 &1205213934
 Mesh:
@@ -17234,6 +17242,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _pickableTag: 
 --- !u!54 &1587556726
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -20854,6 +20863,7 @@ MonoBehaviour:
   _onPick:
     m_PersistentCalls:
       m_Calls: []
+  _pickableTag: 
 --- !u!54 &1904258870
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -21758,6 +21768,74 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1 &1963452910 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2043670746053500479, guid: dacae9fba344ef24da6497ed48021780,
+    type: 3}
+  m_PrefabInstance: {fileID: 1199669507}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1963452912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963452910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cf1ecb55751ad14882e0aea20888452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _requiredPickable: {fileID: 1904258867}
+  _consumePickable: 1
+  _onInteract:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2123913976}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1963452912}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!65 &1963452913
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963452910}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.48498768, y: 1.4735568, z: 1.0586689}
+  m_Center: {x: 0.5660989, y: 0.6270788, z: -0.026502525}
 --- !u!43 &1973837110
 Mesh:
   m_ObjectHideFlags: 0
@@ -23424,6 +23502,12 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1 &2123913976 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5823184530747666354, guid: dacae9fba344ef24da6497ed48021780,
+    type: 3}
+  m_PrefabInstance: {fileID: 1199669507}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1385001552289583911
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23435,17 +23519,17 @@ PrefabInstance:
     - target: {fileID: 132220895943350722, guid: d8deb6c3dad120540863cc8ece2f4d18,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.35
       objectReference: {fileID: 0}
     - target: {fileID: 132220895943350722, guid: d8deb6c3dad120540863cc8ece2f4d18,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.493
       objectReference: {fileID: 0}
     - target: {fileID: 132220895943350722, guid: d8deb6c3dad120540863cc8ece2f4d18,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 132220895943350722, guid: d8deb6c3dad120540863cc8ece2f4d18,
         type: 3}

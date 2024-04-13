@@ -21,18 +21,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Rooms/scene_room_Alan_001.unity
     guid: c03ca544af69c2b4987469d74fdfca2e
   - enabled: 1
-    path: Assets/Scenes/Rooms/scene_room_Alan_002.unity
-    guid: 7c61835e2806456428dccfd6c411ca5a
-  - enabled: 1
-    path: Assets/Scenes/Rooms/scene_room_Alan_003.unity
-    guid: dfabf134367139c449e264881e154eeb
-  - enabled: 1
-    path: Assets/Scenes/Rooms/scene_room_Alan_004.unity
-    guid: b606f860a32295440a6d3ef20a764860
-  - enabled: 1
-    path: Assets/Scenes/Rooms/scene_room_Alan_005.unity
-    guid: aff0931e886c9c940bfdc8ee12c9b094
-  - enabled: 1
-    path: Assets/Scenes/Rooms/scene_room_Alan_006.unity
-    guid: b22d654588494f740af22a55c28d4594
+    path: Assets/Scenes/Rooms/scene_room_Solenn_001.unity
+    guid: 315c96c53936c104d95eb14553aa5bfe
   m_configObjects: {}

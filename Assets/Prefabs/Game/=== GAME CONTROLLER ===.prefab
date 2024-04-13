@@ -53,12 +53,8 @@ MonoBehaviour:
   _firstLevelScene: scene_room_FirstBox
   _beginnerLevelsScenes:
   - scene_room_Alan_001
-  - scene_room_Alan_001
-  - scene_room_Alan_001
-  _advancedLevelsScenes:
-  - scene_room_Alan_001
-  - scene_room_Alan_001
-  - scene_room_Alan_001
+  - scene_room_Solenn_001
+  _advancedLevelsScenes: []
   _gameDuration: 10
 --- !u!114 &4834515737802293791
 MonoBehaviour:

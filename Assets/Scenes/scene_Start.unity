@@ -735,59 +735,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 339631883927032735, guid: d6698fa3519d73243a2e70564669c7f9,
         type: 3}
-      propertyPath: _gameDuration
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 339631883927032735, guid: d6698fa3519d73243a2e70564669c7f9,
-        type: 3}
-      propertyPath: _failGameOverScene
-      value: scene_Gameover_fail
-      objectReference: {fileID: 0}
-    - target: {fileID: 339631883927032735, guid: d6698fa3519d73243a2e70564669c7f9,
-        type: 3}
-      propertyPath: _successGameOverScene
-      value: scene_Gameover_success
-      objectReference: {fileID: 0}
-    - target: {fileID: 339631883927032735, guid: d6698fa3519d73243a2e70564669c7f9,
-        type: 3}
-      propertyPath: _firstLevelScene._sceneName
-      value: scene_room_FirstBox
-      objectReference: {fileID: 0}
-    - target: {fileID: 339631883927032735, guid: d6698fa3519d73243a2e70564669c7f9,
-        type: 3}
-      propertyPath: _beginnerLevelsScenes.Array.size
-      value: 1
+      propertyPath: _firstLevelScene
+      value: scene_room_intro_Pierre_001
       objectReference: {fileID: 0}
     - target: {fileID: 339631883927032735, guid: d6698fa3519d73243a2e70564669c7f9,
         type: 3}
       propertyPath: _beginnerLevelsScenes.Array.data[0]
       value: scene_room_Solenn_001
       objectReference: {fileID: 0}
-    - target: {fileID: 339631883927032735, guid: d6698fa3519d73243a2e70564669c7f9,
-        type: 3}
-      propertyPath: _firstLevelScene._gameoverMagazineMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: 24142581b87ee0e438ddb52670db1861, type: 2}
-    - target: {fileID: 339631883927032735, guid: d6698fa3519d73243a2e70564669c7f9,
-        type: 3}
-      propertyPath: _advancedLevelsScenes.Array.data[0]._sceneName
-      value: scene_room_Pierre_001
-      objectReference: {fileID: 0}
-    - target: {fileID: 339631883927032735, guid: d6698fa3519d73243a2e70564669c7f9,
-        type: 3}
-      propertyPath: _beginnerLevelsScenes.Array.data[0]._sceneName
-      value: scene_room_Solenn_001
-      objectReference: {fileID: 0}
-    - target: {fileID: 339631883927032735, guid: d6698fa3519d73243a2e70564669c7f9,
-        type: 3}
-      propertyPath: _advancedLevelsScenes.Array.data[0]._gameoverMagazineMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: 593d6c4fcb326f0479ec45364197cc8e, type: 2}
-    - target: {fileID: 339631883927032735, guid: d6698fa3519d73243a2e70564669c7f9,
-        type: 3}
-      propertyPath: _beginnerLevelsScenes.Array.data[0]._gameoverMagazineMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: 325c16b29c6890a4f895803f5fea9a28, type: 2}
     - target: {fileID: 3416516943079463398, guid: d6698fa3519d73243a2e70564669c7f9,
         type: 3}
       propertyPath: m_LocalPosition.x

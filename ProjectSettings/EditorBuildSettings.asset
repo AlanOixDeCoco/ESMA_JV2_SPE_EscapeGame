@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Rooms/scene_room_Pierre_001.unity
     guid: d4fcce27e02745e44b57a2ce5773d7c8
+  - enabled: 1
+    path: Assets/Scenes/Rooms/scene_room_intro_Pierre_001.unity
+    guid: e6199af7758807c439e36a42bfd6b5d2
   m_configObjects: {}

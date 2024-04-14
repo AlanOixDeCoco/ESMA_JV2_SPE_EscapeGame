@@ -394,9 +394,18 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             ""id"": ""9a3e4510-6cf3-4cf3-87b1-2a3df6da248c"",
             ""actions"": [
                 {
-                    ""name"": ""Pause"",
+                    ""name"": ""Escape"",
                     ""type"": ""Button"",
                     ""id"": ""bfc422c3-77a4-42d5-9d4d-762d3dd53069"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AnyButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""0faa8f3e-0480-439f-93c6-89bfe929329f"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -411,7 +420,29 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Pause"",
+                    ""action"": ""Escape"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5df1da56-e7c8-40b8-8119-8bf7d36f49fb"",
+                    ""path"": ""<Keyboard>/anyKey"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fe88dd66-6ff8-467e-a56d-03636664c4ff"",
+                    ""path"": ""<Mouse>/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -432,7 +463,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_FPS_Gameplay_Throw = m_FPS_Gameplay.FindAction("Throw", throwIfNotFound: true);
         // FPS_UI
         m_FPS_UI = asset.FindActionMap("FPS_UI", throwIfNotFound: true);
-        m_FPS_UI_Pause = m_FPS_UI.FindAction("Pause", throwIfNotFound: true);
+        m_FPS_UI_Escape = m_FPS_UI.FindAction("Escape", throwIfNotFound: true);
+        m_FPS_UI_AnyButton = m_FPS_UI.FindAction("AnyButton", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -596,12 +628,14 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     // FPS_UI
     private readonly InputActionMap m_FPS_UI;
     private List<IFPS_UIActions> m_FPS_UIActionsCallbackInterfaces = new List<IFPS_UIActions>();
-    private readonly InputAction m_FPS_UI_Pause;
+    private readonly InputAction m_FPS_UI_Escape;
+    private readonly InputAction m_FPS_UI_AnyButton;
     public struct FPS_UIActions
     {
         private @PlayerInputs m_Wrapper;
         public FPS_UIActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Pause => m_Wrapper.m_FPS_UI_Pause;
+        public InputAction @Escape => m_Wrapper.m_FPS_UI_Escape;
+        public InputAction @AnyButton => m_Wrapper.m_FPS_UI_AnyButton;
         public InputActionMap Get() { return m_Wrapper.m_FPS_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -611,16 +645,22 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_FPS_UIActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_FPS_UIActionsCallbackInterfaces.Add(instance);
-            @Pause.started += instance.OnPause;
-            @Pause.performed += instance.OnPause;
-            @Pause.canceled += instance.OnPause;
+            @Escape.started += instance.OnEscape;
+            @Escape.performed += instance.OnEscape;
+            @Escape.canceled += instance.OnEscape;
+            @AnyButton.started += instance.OnAnyButton;
+            @AnyButton.performed += instance.OnAnyButton;
+            @AnyButton.canceled += instance.OnAnyButton;
         }
 
         private void UnregisterCallbacks(IFPS_UIActions instance)
         {
-            @Pause.started -= instance.OnPause;
-            @Pause.performed -= instance.OnPause;
-            @Pause.canceled -= instance.OnPause;
+            @Escape.started -= instance.OnEscape;
+            @Escape.performed -= instance.OnEscape;
+            @Escape.canceled -= instance.OnEscape;
+            @AnyButton.started -= instance.OnAnyButton;
+            @AnyButton.performed -= instance.OnAnyButton;
+            @AnyButton.canceled -= instance.OnAnyButton;
         }
 
         public void RemoveCallbacks(IFPS_UIActions instance)
@@ -651,6 +691,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     }
     public interface IFPS_UIActions
     {
-        void OnPause(InputAction.CallbackContext context);
+        void OnEscape(InputAction.CallbackContext context);
+        void OnAnyButton(InputAction.CallbackContext context);
     }
 }

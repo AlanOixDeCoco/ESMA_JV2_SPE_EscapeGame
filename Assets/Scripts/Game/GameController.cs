@@ -6,6 +6,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
+[Serializable]
+public class SceneAndGameoverMagazine
+{
+    public string _sceneName;
+    public Material _gameoverMagazineMaterial;
+}
+
 public class GameController : MonoBehaviour
 {
     #region Singleton variables
@@ -30,15 +37,17 @@ public class GameController : MonoBehaviour
     [SerializeField] private string _introductionScene;
     [SerializeField] private string _successGameOverScene;
     [SerializeField] private string _failGameOverScene;
-    [SerializeField] private string _firstLevelScene;
-    [SerializeField] private string[] _beginnerLevelsScenes;
-    [SerializeField] private string[] _advancedLevelsScenes;
+    [SerializeField] private SceneAndGameoverMagazine _firstLevelScene;
+    [SerializeField] private SceneAndGameoverMagazine[] _beginnerLevelsScenes;
+    [SerializeField] private SceneAndGameoverMagazine[] _advancedLevelsScenes;
 
     private SceneController _activeSceneController;
     private bool _inTransitionScene = false;
 
-    private List<string> _levelsQueue;
+    private List<SceneAndGameoverMagazine> _levelsQueue;
 
+    private SceneAndGameoverMagazine _currentSceneAndGameoverMagazine;
+    public SceneAndGameoverMagazine CurrentSceneAndGameoverMagazine => _currentSceneAndGameoverMagazine;
     #endregion
 
     #region Rules
@@ -53,6 +62,7 @@ public class GameController : MonoBehaviour
 
     private GameUI _gameUI;
     public GameUI GameUI => _gameUI;
+
     public void SetGameUI(GameUI gameUI)
     {
         _gameUI = gameUI;
@@ -84,6 +94,17 @@ public class GameController : MonoBehaviour
     {
         _activeSceneController = sceneController;
     }
+
+    public IEnumerator GoToMainMenu()
+    {
+        yield return StartCoroutine(FadeIn());
+        
+        var loadSceneAsync = SceneManager.LoadSceneAsync(_mainMenuScene);
+        
+        yield return new WaitUntil(() => loadSceneAsync.isDone);
+
+        yield return StartCoroutine(FadeOut());
+    }
     
     public IEnumerator StartGame()
     {
@@ -108,9 +129,9 @@ public class GameController : MonoBehaviour
         yield return StartCoroutine(StartNextLevel());
     }
 
-    private List<string> CreateNewLevelsQueue()
+    private List<SceneAndGameoverMagazine> CreateNewLevelsQueue()
     {
-        var newLevelsQueue = new List<string>();
+        var newLevelsQueue = new List<SceneAndGameoverMagazine>();
         
         newLevelsQueue.Add(_firstLevelScene);
         
@@ -141,13 +162,13 @@ public class GameController : MonoBehaviour
     private IEnumerator StartNextLevel()
     {
         yield return StartCoroutine(FadeIn());
+
+        _currentSceneAndGameoverMagazine = _levelsQueue.First();
         
-        var loadSceneAsync = SceneManager.LoadSceneAsync(_levelsQueue.First());
+        var loadSceneAsync = SceneManager.LoadSceneAsync(_levelsQueue.First()._sceneName);
         _levelsQueue.RemoveAt(0);
         
-        Debug.Log("Wait for scene to load...");
         yield return new WaitUntil(() => loadSceneAsync.isDone);
-        Debug.Log("Scene loaded!");
 
         yield return StartCoroutine(FadeOut());
         
@@ -178,9 +199,11 @@ public class GameController : MonoBehaviour
         
         var loadSceneAsync = SceneManager.LoadSceneAsync(sceneToLoad);
         
-        Debug.Log("Wait for scene to load...");
         yield return new WaitUntil(() => loadSceneAsync.isDone);
 
         yield return StartCoroutine(FadeOut());
+        
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
     }
 }

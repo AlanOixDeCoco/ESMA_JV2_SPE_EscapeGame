@@ -19,6 +19,9 @@ public class PlayerSpawn : MonoBehaviour
 
     public void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        
         // Instanciate player
         var player = Instantiate(_playerCharacterPrefab, transform.position, transform.rotation);
         player.transform.parent = _gameplayTransform;

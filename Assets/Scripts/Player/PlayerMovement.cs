@@ -42,9 +42,6 @@ public class PlayerMovement : PlayerComponent
 
         _baseCharacterHeight = _characterController.height;
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-
         _headPosition = _playerManager.PlayerHeadTransform.localPosition;
     }
 

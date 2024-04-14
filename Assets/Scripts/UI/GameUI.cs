@@ -21,7 +21,6 @@ public class GameUI : MonoBehaviour
 
     public void ShowLoadingScreen(bool show)
     {
-        Debug.Log(show);
         _loadingScreenPanel.gameObject.SetActive(show);
     }
 }

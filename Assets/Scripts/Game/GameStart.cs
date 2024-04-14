@@ -10,6 +10,8 @@ public class GameStart : MonoBehaviour
     
     private void Start()
     {
-        SceneManager.LoadScene(_mainMenuSceneIndex);
+        GameController.Instance.GameUI.ShowLoadingScreen(true);
+        
+        var sceneLoading = SceneManager.LoadSceneAsync(_mainMenuSceneIndex);
     }
 }

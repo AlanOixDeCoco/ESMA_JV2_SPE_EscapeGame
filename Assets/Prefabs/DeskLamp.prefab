@@ -12626,6 +12626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _requiredPickable: {fileID: 0}
+  _consumePickable: 0
   _onInteract:
     m_PersistentCalls:
       m_Calls:

@@ -94,6 +94,17 @@ public class GameController : MonoBehaviour
     {
         _activeSceneController = sceneController;
     }
+
+    public IEnumerator GoToMainMenu()
+    {
+        yield return StartCoroutine(FadeIn());
+        
+        var loadSceneAsync = SceneManager.LoadSceneAsync(_mainMenuScene);
+        
+        yield return new WaitUntil(() => loadSceneAsync.isDone);
+
+        yield return StartCoroutine(FadeOut());
+    }
     
     public IEnumerator StartGame()
     {
@@ -191,5 +202,8 @@ public class GameController : MonoBehaviour
         yield return new WaitUntil(() => loadSceneAsync.isDone);
 
         yield return StartCoroutine(FadeOut());
+        
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
     }
 }

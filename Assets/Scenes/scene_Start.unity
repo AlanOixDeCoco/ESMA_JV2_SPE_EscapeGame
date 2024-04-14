@@ -735,6 +735,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 339631883927032735, guid: d6698fa3519d73243a2e70564669c7f9,
         type: 3}
+      propertyPath: _firstLevelScene
+      value: scene_room_intro_Pierre_001
+      objectReference: {fileID: 0}
+    - target: {fileID: 339631883927032735, guid: d6698fa3519d73243a2e70564669c7f9,
+        type: 3}
       propertyPath: _beginnerLevelsScenes.Array.data[0]
       value: scene_room_Solenn_001
       objectReference: {fileID: 0}

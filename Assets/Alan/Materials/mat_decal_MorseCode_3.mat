@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: mat_decal_MorseCode_5
+  m_Name: mat_decal_MorseCode_3
   m_Shader: {fileID: -6465566751694194690, guid: 9b4e681081e2b4c469111bb649e2f7ee,
     type: 3}
   m_Parent: {fileID: 0}
@@ -38,11 +38,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Base_Map:
-        m_Texture: {fileID: 2800000, guid: 957ce8369a33f4f49ba777227b573cf4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 613bcb75503a6eb47a35117c1c1e80d3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Normal_Map:
-        m_Texture: {fileID: 2800000, guid: 705accbb778f56c48b28de6d06b34050, type: 3}
+        m_Texture: {fileID: 2800000, guid: eaebb9ada04e9c54fb4eac8006e475f6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:

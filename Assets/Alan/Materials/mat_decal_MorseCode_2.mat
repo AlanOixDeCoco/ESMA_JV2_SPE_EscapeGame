@@ -42,7 +42,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Normal_Map:
-        m_Texture: {fileID: 2800000, guid: 42b04707f01906f42a95aac25d2a1fbf, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1d60bbee506353844a0f6f9df96b7516, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -107,7 +107,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Normal_Blend: 33.95
+    - Normal_Blend: 1
     - _AlphaClip: 0
     - _AlphaToMask: 0
     - _Blend: 0

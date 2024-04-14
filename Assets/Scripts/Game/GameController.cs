@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class GameController : MonoBehaviour
 {
@@ -17,14 +19,25 @@ public class GameController : MonoBehaviour
     [SerializeField] private PlayerController _playerController;
     [SerializeField] private TimeController _timeController;
     public PlayerController PlayerController => _playerController;
+    public TimeController TimeController => _timeController;
+
     #endregion
 
-    #region Levels
+    #region Scenes
 
-    [Header("Levels")]
-    [SerializeField] private string[] _levels;
+    [Header("Scenes")] 
+    [SerializeField] private string _mainMenuScene;
+    [SerializeField] private string _introductionScene;
+    [SerializeField] private string _successGameOverScene;
+    [SerializeField] private string _failGameOverScene;
+    [SerializeField] private string _firstLevelScene;
+    [SerializeField] private string[] _beginnerLevelsScenes;
+    [SerializeField] private string[] _advancedLevelsScenes;
 
-    private LevelController _activeLevelController;
+    private SceneController _activeSceneController;
+    private bool _inTransitionScene = false;
+
+    private List<string> _levelsQueue;
 
     #endregion
 
@@ -32,7 +45,19 @@ public class GameController : MonoBehaviour
 
     [Header("Rules")]
     [Tooltip("Game duration until gameover, in minutes")] [SerializeField] private float _gameDuration;
-    
+    public float GameDuration => _gameDuration;
+
+    #endregion
+
+    #region UI
+
+    private GameUI _gameUI;
+    public GameUI GameUI => _gameUI;
+    public void SetGameUI(GameUI gameUI)
+    {
+        _gameUI = gameUI;
+    }
+
     #endregion
     
     private void Awake()
@@ -55,19 +80,107 @@ public class GameController : MonoBehaviour
         _playerController = GetComponent<PlayerController>();
     }
 
-    public void OnLevelReady(LevelController levelController)
+    public void SetActiveSceneController(SceneController sceneController)
     {
-        _activeLevelController = levelController;
+        _activeSceneController = sceneController;
+    }
+    
+    public IEnumerator StartGame()
+    {
+        _timeController.ResetTime();
+        _levelsQueue = CreateNewLevelsQueue();
+        yield return StartCoroutine(OnLevelSuccess());
+    }
+
+    public IEnumerator OnLevelSuccess()
+    {
+        _timeController.Pause();
+
+        if (_levelsQueue.Count > 0) yield return StartCoroutine(StartNextLevel());
+        else yield return StartCoroutine(Gameover(true));
+    }
+
+    public IEnumerator OnLevelFail()
+    {
+        _timeController.Pause();
+        _levelsQueue = CreateNewLevelsQueue();
+
+        yield return StartCoroutine(StartNextLevel());
+    }
+
+    private List<string> CreateNewLevelsQueue()
+    {
+        var newLevelsQueue = new List<string>();
+        
+        newLevelsQueue.Add(_firstLevelScene);
+        
+        var beginnerLevels = _beginnerLevelsScenes.ToList();
+        var advancedLevels = _advancedLevelsScenes.ToList();
+
+        for (int i = 0; i < _beginnerLevelsScenes.Length; i++)
+        {
+            int levelIndex = Random.Range(0, beginnerLevels.Count);
+            
+            newLevelsQueue.Add(beginnerLevels[levelIndex]);
+            
+            beginnerLevels.RemoveAt(levelIndex);
+        }
+        
+        for (int i = 0; i < _advancedLevelsScenes.Length; i++)
+        {
+            int levelIndex = Random.Range(0, advancedLevels.Count);
+            
+            newLevelsQueue.Add(advancedLevels[levelIndex]);
+            
+            advancedLevels.RemoveAt(levelIndex);
+        }
+
+        return newLevelsQueue;
+    }
+
+    private IEnumerator StartNextLevel()
+    {
+        yield return StartCoroutine(FadeIn());
+        
+        var loadSceneAsync = SceneManager.LoadSceneAsync(_levelsQueue.First());
+        _levelsQueue.RemoveAt(0);
+        
+        Debug.Log("Wait for scene to load...");
+        yield return new WaitUntil(() => loadSceneAsync.isDone);
+        Debug.Log("Scene loaded!");
+
+        yield return StartCoroutine(FadeOut());
+        
         _timeController.Resume();
     }
 
-    public void OnLevelSuccess()
+    private IEnumerator FadeIn()
     {
-        _timeController.Pause();
+        yield return new WaitForSeconds(1f);
+        
+        _playerController.PlayerInputs.Disable();
+
+        yield return StartCoroutine(GameUI.FadeInOut.FadeIn(1f));
+    }
+    
+    private IEnumerator FadeOut()
+    {
+        yield return StartCoroutine(GameUI.FadeInOut.FadeOut(1f));
+        
+        _playerController.PlayerInputs.Enable();
     }
 
-    public void OnLevelFail()
+    public IEnumerator Gameover(bool success)
     {
-        _timeController.Pause();
+        yield return StartCoroutine(FadeIn());
+
+        var sceneToLoad = success ? _successGameOverScene : _failGameOverScene;
+        
+        var loadSceneAsync = SceneManager.LoadSceneAsync(sceneToLoad);
+        
+        Debug.Log("Wait for scene to load...");
+        yield return new WaitUntil(() => loadSceneAsync.isDone);
+
+        yield return StartCoroutine(FadeOut());
     }
 }

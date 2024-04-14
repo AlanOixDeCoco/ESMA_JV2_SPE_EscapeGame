@@ -105,6 +105,11 @@ public class InteractableLookState : LookState
         if (_aimedInteractable.FitsInteraction(_playerManager.PlayerHand.PickableTransform))
         {
             _aimedInteractable.Interact(_playerManager, _playerManager.PlayerHand.Pickable);
+            if (_aimedInteractable.ConsumePickable)
+            {
+               _playerManager.PlayerHand.ConsumePickable();
+            }
+            _playerLook.SwitchLookState(new DefaultLookState(_playerManager, _playerLook));
         }
     }
 }

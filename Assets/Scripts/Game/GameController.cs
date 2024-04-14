@@ -156,14 +156,16 @@ public class GameController : MonoBehaviour
 
     private IEnumerator FadeIn()
     {
-        _playerController.PlayerInputs.Disable();
+        yield return new WaitForSeconds(1f);
         
-        yield return new WaitForSeconds(2f);
+        _playerController.PlayerInputs.Disable();
+
+        yield return StartCoroutine(GameUI.FadeInOut.FadeIn(1f));
     }
     
     private IEnumerator FadeOut()
     {
-        yield return new WaitForSeconds(2f);
+        yield return StartCoroutine(GameUI.FadeInOut.FadeOut(1f));
         
         _playerController.PlayerInputs.Enable();
     }

@@ -6,7 +6,9 @@ using UnityEngine;
 public class GameUI : MonoBehaviour
 {
     [SerializeField] private RectTransform _loadingScreenPanel;
-    
+    [SerializeField] private FadeInOut _fadeInOut;
+    public FadeInOut FadeInOut => _fadeInOut;
+
     private void Awake()
     {
         DontDestroyOnLoad(this);

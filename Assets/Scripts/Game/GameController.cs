@@ -28,6 +28,8 @@ public class GameController : MonoBehaviour
     [Header("Scenes")] 
     [SerializeField] private string _mainMenuScene;
     [SerializeField] private string _introductionScene;
+    [SerializeField] private string _successGameOverScene;
+    [SerializeField] private string _failGameOverScene;
     [SerializeField] private string _firstLevelScene;
     [SerializeField] private string[] _beginnerLevelsScenes;
     [SerializeField] private string[] _advancedLevelsScenes;
@@ -50,7 +52,7 @@ public class GameController : MonoBehaviour
     #region UI
 
     private GameUI _gameUI;
-    public GameUI UI => _gameUI;
+    public GameUI GameUI => _gameUI;
     public void SetGameUI(GameUI gameUI)
     {
         _gameUI = gameUI;
@@ -94,7 +96,8 @@ public class GameController : MonoBehaviour
     {
         _timeController.Pause();
 
-        yield return StartCoroutine(StartNextLevel());
+        if (_levelsQueue.Count > 0) yield return StartCoroutine(StartNextLevel());
+        else yield return StartCoroutine(Gameover(true));
     }
 
     public IEnumerator OnLevelFail()
@@ -153,13 +156,29 @@ public class GameController : MonoBehaviour
 
     private IEnumerator FadeIn()
     {
-        Debug.Log("Fade in...");
+        _playerController.PlayerInputs.Disable();
+        
         yield return new WaitForSeconds(2f);
     }
     
     private IEnumerator FadeOut()
     {
-        Debug.Log("Fade out...");
         yield return new WaitForSeconds(2f);
+        
+        _playerController.PlayerInputs.Enable();
+    }
+
+    public IEnumerator Gameover(bool success)
+    {
+        yield return StartCoroutine(FadeIn());
+
+        var sceneToLoad = success ? _successGameOverScene : _failGameOverScene;
+        
+        var loadSceneAsync = SceneManager.LoadSceneAsync(sceneToLoad);
+        
+        Debug.Log("Wait for scene to load...");
+        yield return new WaitUntil(() => loadSceneAsync.isDone);
+
+        yield return StartCoroutine(FadeOut());
     }
 }

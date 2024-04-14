@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 1f8739b3a97ac254c8815c22f3e770c7
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Fuse: {fileID: 7391547976042096371, guid: a145d7974a4ef3344b3909e9bb7546da, type: 3}
+  - ElectricalBox: {fileID: 2043670746053500479, guid: dacae9fba344ef24da6497ed48021780,
+      type: 3}
+  - ElectricalBoxFuse: {fileID: 8207031258882924875, guid: 25ba85a7a7523984bbe15d731c3a3a34,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

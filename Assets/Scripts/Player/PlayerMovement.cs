@@ -116,6 +116,6 @@ public class PlayerMovement : PlayerComponent
         // then you can also multiply the push velocity by that.
 
         // Apply the push
-        body.AddForceAtPosition(pushDir * 10, hit.point, ForceMode.Acceleration);
+        body.velocity = pushDir * 2;
     }
 }

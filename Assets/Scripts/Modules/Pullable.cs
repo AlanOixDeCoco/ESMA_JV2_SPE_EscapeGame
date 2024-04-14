@@ -21,6 +21,6 @@ public class Pullable : MonoBehaviour
         var forceDir = playerHandTransform.position - _centerOfMass.position;
         forceDir.y = 0;
         
-        _rb.AddForce(forceDir * 1500);
+        _rb.AddForce(forceDir * 2000);
     }
 }

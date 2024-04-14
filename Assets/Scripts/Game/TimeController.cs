@@ -3,6 +3,7 @@ using UnityEngine;
 public class TimeController : MonoBehaviour
 {
     private bool _isPaused = true;
+    private bool _isActive = true;
     
     private float _time;
 
@@ -13,7 +14,14 @@ public class TimeController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(!_isActive) return;
+        
         if(!_isPaused) _time += Time.fixedDeltaTime;
+        if (GetRemainingTime() <= 0)
+        {
+            _isActive = false;
+            GameController.Instance.StartCoroutine(GameController.Instance.Gameover(false));
+        }
     }
 
     public void Pause()
@@ -35,6 +43,8 @@ public class TimeController : MonoBehaviour
     public float GetRemainingTime()
     {
         var gameDuration = GameController.Instance.GameDuration * 60;
-        return gameDuration - _time;
+        var remainingTime = gameDuration - _time;
+        if(remainingTime < 0) remainingTime = 0;
+        return remainingTime;
     }
 }

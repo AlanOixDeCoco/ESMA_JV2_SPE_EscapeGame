@@ -50,6 +50,6 @@ public class PlayerUI : MonoBehaviour
         var seconds = (int)(remainingTime % 60);
         var minutes = (int)((remainingTime - seconds) / 60);
 
-        _timeText.text = $"{minutes}:{seconds}";
+        _timeText.text = $"{minutes:00}:{seconds:00}";
     }
 }

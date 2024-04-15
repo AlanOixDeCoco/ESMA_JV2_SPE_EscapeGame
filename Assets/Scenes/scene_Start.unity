@@ -735,14 +735,103 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 339631883927032735, guid: d6698fa3519d73243a2e70564669c7f9,
         type: 3}
+      propertyPath: _gameDuration
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 339631883927032735, guid: d6698fa3519d73243a2e70564669c7f9,
+        type: 3}
       propertyPath: _firstLevelScene
       value: scene_room_intro_Pierre_001
+      objectReference: {fileID: 0}
+    - target: {fileID: 339631883927032735, guid: d6698fa3519d73243a2e70564669c7f9,
+        type: 3}
+      propertyPath: _failGameOverScene
+      value: scene_GameOver_fail
+      objectReference: {fileID: 0}
+    - target: {fileID: 339631883927032735, guid: d6698fa3519d73243a2e70564669c7f9,
+        type: 3}
+      propertyPath: _successGameOverScene
+      value: scene_GameOver_success
+      objectReference: {fileID: 0}
+    - target: {fileID: 339631883927032735, guid: d6698fa3519d73243a2e70564669c7f9,
+        type: 3}
+      propertyPath: _firstLevelScene._sceneName
+      value: scene_room_intro_Pierre_001
+      objectReference: {fileID: 0}
+    - target: {fileID: 339631883927032735, guid: d6698fa3519d73243a2e70564669c7f9,
+        type: 3}
+      propertyPath: _advancedLevelsScenes.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 339631883927032735, guid: d6698fa3519d73243a2e70564669c7f9,
+        type: 3}
+      propertyPath: _beginnerLevelsScenes.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 339631883927032735, guid: d6698fa3519d73243a2e70564669c7f9,
         type: 3}
       propertyPath: _beginnerLevelsScenes.Array.data[0]
       value: scene_room_Solenn_001
       objectReference: {fileID: 0}
+    - target: {fileID: 339631883927032735, guid: d6698fa3519d73243a2e70564669c7f9,
+        type: 3}
+      propertyPath: _firstLevelScene._gameoverMagazineMaterial
+      value: 
+      objectReference: {fileID: 8430686612768391619, guid: 44aa31dab469cd646a6bca26b00841ba,
+        type: 3}
+    - target: {fileID: 339631883927032735, guid: d6698fa3519d73243a2e70564669c7f9,
+        type: 3}
+      propertyPath: _advancedLevelsScenes.Array.data[0]._sceneName
+      value: scene_room_Pierre_001
+      objectReference: {fileID: 0}
+    - target: {fileID: 339631883927032735, guid: d6698fa3519d73243a2e70564669c7f9,
+        type: 3}
+      propertyPath: _advancedLevelsScenes.Array.data[1]._sceneName
+      value: scene_room_Alan_001
+      objectReference: {fileID: 0}
+    - target: {fileID: 339631883927032735, guid: d6698fa3519d73243a2e70564669c7f9,
+        type: 3}
+      propertyPath: _advancedLevelsScenes.Array.data[2]._sceneName
+      value: scene_room_Mathieu_001
+      objectReference: {fileID: 0}
+    - target: {fileID: 339631883927032735, guid: d6698fa3519d73243a2e70564669c7f9,
+        type: 3}
+      propertyPath: _beginnerLevelsScenes.Array.data[0]._sceneName
+      value: scene_room_Solenn_001
+      objectReference: {fileID: 0}
+    - target: {fileID: 339631883927032735, guid: d6698fa3519d73243a2e70564669c7f9,
+        type: 3}
+      propertyPath: _beginnerLevelsScenes.Array.data[1]._sceneName
+      value: scene_room_Cesar_001
+      objectReference: {fileID: 0}
+    - target: {fileID: 339631883927032735, guid: d6698fa3519d73243a2e70564669c7f9,
+        type: 3}
+      propertyPath: _advancedLevelsScenes.Array.data[0]._gameoverMagazineMaterial
+      value: 
+      objectReference: {fileID: 8430686612768391619, guid: 09d0a4f3da93a0e4c8be3e6192a1fcee,
+        type: 3}
+    - target: {fileID: 339631883927032735, guid: d6698fa3519d73243a2e70564669c7f9,
+        type: 3}
+      propertyPath: _advancedLevelsScenes.Array.data[1]._gameoverMagazineMaterial
+      value: 
+      objectReference: {fileID: 8430686612768391619, guid: 09d0a4f3da93a0e4c8be3e6192a1fcee,
+        type: 3}
+    - target: {fileID: 339631883927032735, guid: d6698fa3519d73243a2e70564669c7f9,
+        type: 3}
+      propertyPath: _advancedLevelsScenes.Array.data[2]._gameoverMagazineMaterial
+      value: 
+      objectReference: {fileID: 8430686612768391619, guid: 09d0a4f3da93a0e4c8be3e6192a1fcee,
+        type: 3}
+    - target: {fileID: 339631883927032735, guid: d6698fa3519d73243a2e70564669c7f9,
+        type: 3}
+      propertyPath: _beginnerLevelsScenes.Array.data[0]._gameoverMagazineMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: d79ccf7ec89d7e34c85415f59576b5ee, type: 2}
+    - target: {fileID: 339631883927032735, guid: d6698fa3519d73243a2e70564669c7f9,
+        type: 3}
+      propertyPath: _beginnerLevelsScenes.Array.data[1]._gameoverMagazineMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: d79ccf7ec89d7e34c85415f59576b5ee, type: 2}
     - target: {fileID: 3416516943079463398, guid: d6698fa3519d73243a2e70564669c7f9,
         type: 3}
       propertyPath: m_LocalPosition.x

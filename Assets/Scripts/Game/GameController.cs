@@ -34,7 +34,6 @@ public class GameController : MonoBehaviour
 
     [Header("Scenes")] 
     [SerializeField] private string _mainMenuScene;
-    [SerializeField] private string _introductionScene;
     [SerializeField] private string _successGameOverScene;
     [SerializeField] private string _failGameOverScene;
     [SerializeField] private SceneAndGameoverMagazine _firstLevelScene;
@@ -42,7 +41,6 @@ public class GameController : MonoBehaviour
     [SerializeField] private SceneAndGameoverMagazine[] _advancedLevelsScenes;
 
     private SceneController _activeSceneController;
-    private bool _inTransitionScene = false;
 
     private List<SceneAndGameoverMagazine> _levelsQueue;
 

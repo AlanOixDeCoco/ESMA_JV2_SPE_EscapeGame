@@ -7679,8 +7679,72 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2018546280561218645, guid: d5ab3425ce384ca459d6584effdc18c5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1977726804}
+    - targetCorrespondingSourceObject: {fileID: 2018546280561218645, guid: d5ab3425ce384ca459d6584effdc18c5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1977726805}
   m_SourcePrefab: {fileID: 100100000, guid: d5ab3425ce384ca459d6584effdc18c5, type: 3}
+--- !u!1 &1977726803 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2018546280561218645, guid: d5ab3425ce384ca459d6584effdc18c5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1977726802}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1977726804
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1977726803}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2682561, y: 0.23483007, z: 0.28584534}
+  m_Center: {x: -0, y: 0.11741501, z: 0}
+--- !u!114 &1977726805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1977726803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cf1ecb55751ad14882e0aea20888452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _requiredPickable: {fileID: 0}
+  _consumePickable: 0
+  _onInteract:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6997340383913187080}
+        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+        m_MethodName: OnLevelSuccess
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1987914807
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8395,6 +8459,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32b709a07eaeb044bbe75846b9719048, type: 3}
+--- !u!114 &6997340383913187080 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6999814644630520470, guid: 32b709a07eaeb044bbe75846b9719048,
+    type: 3}
+  m_PrefabInstance: {fileID: 6997340383913187079}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48099a431b4239c43a50665494ce820e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7258507564981436872
 PrefabInstance:
   m_ObjectHideFlags: 0

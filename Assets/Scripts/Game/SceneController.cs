@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    [SerializeField] private UnityEvent _onLoad, _onStart;
+    [SerializeField] private UnityEvent _onLoad, _onStart, _onSuccess, _onFail;
 
     private bool _hasEnded = false;
 
@@ -35,6 +35,7 @@ public class SceneController : MonoBehaviour
         if (!_hasEnded)
         {
             _hasEnded = true;
+            _onSuccess.Invoke();
             GameController.Instance.StartCoroutine(GameController.Instance.OnLevelSuccess());
         }
     }
@@ -44,6 +45,7 @@ public class SceneController : MonoBehaviour
         if (!_hasEnded)
         {
             _hasEnded = true;
+            _onFail.Invoke();
             GameController.Instance.StartCoroutine(GameController.Instance.OnLevelFail());
         }
     }

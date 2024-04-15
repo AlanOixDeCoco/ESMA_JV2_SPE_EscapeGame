@@ -41,6 +41,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private SceneAndGameoverMagazine[] _advancedLevelsScenes;
 
     private SceneController _activeSceneController;
+    public SceneController ActiveSceneController => _activeSceneController;
 
     private List<SceneAndGameoverMagazine> _levelsQueue;
 
@@ -175,11 +176,11 @@ public class GameController : MonoBehaviour
 
     private IEnumerator FadeIn()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         
         _playerController.PlayerInputs.Disable();
 
-        yield return StartCoroutine(GameUI.FadeInOut.FadeIn(1f));
+        yield return StartCoroutine(GameUI.FadeInOut.FadeIn(2f));
     }
     
     private IEnumerator FadeOut()
@@ -203,5 +204,17 @@ public class GameController : MonoBehaviour
         
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
+    }
+
+    public void ExitGame()
+    {
+        StartCoroutine(ExitGameCoroutine());
+    }
+
+    private IEnumerator ExitGameCoroutine()
+    {
+        yield return StartCoroutine(GameUI.FadeInOut.FadeIn(1f));
+        
+        Application.Quit();
     }
 }

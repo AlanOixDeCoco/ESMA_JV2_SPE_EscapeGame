@@ -1,15 +1,14 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 public class GameOverController : MonoBehaviour
 {
     [SerializeField] private MeshRenderer _magazineMeshRenderer;
 
     [SerializeField] private bool _failed = false;
+
+    private Action<InputAction.CallbackContext> inputHandler;
     
     private void Start()
     {
@@ -17,10 +16,18 @@ public class GameOverController : MonoBehaviour
         
         GameController.Instance.PlayerController.PlayerInputs.Enable();
         
-        GameController.Instance.PlayerController.PlayerInputs.FPS_UI.AnyButton.performed += (callbackContext) =>
+        inputHandler = (InputAction.CallbackContext callbackContext) =>
         {
+            GameController.Instance.PlayerController.PlayerInputs.FPS_UI.AnyButton.Reset();
             GameController.Instance.PlayerController.PlayerInputs.Disable();
             GameController.Instance.StartCoroutine(GameController.Instance.GoToMainMenu());
         };
+
+        GameController.Instance.PlayerController.PlayerInputs.FPS_UI.AnyButton.performed += inputHandler;
+    }
+
+    private void OnDisable()
+    {
+        GameController.Instance.PlayerController.PlayerInputs.FPS_UI.AnyButton.performed -= inputHandler;
     }
 }

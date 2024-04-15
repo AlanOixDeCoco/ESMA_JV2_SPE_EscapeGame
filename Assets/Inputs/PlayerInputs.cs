@@ -73,6 +73,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Throw"",
+                    ""type"": ""Button"",
+                    ""id"": ""81330acf-068c-449b-9259-007ef4085d6c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Crouch"",
                     ""type"": ""Button"",
                     ""id"": ""f358a272-298f-4ef9-b8a9-fb83bd5ca6aa"",
@@ -88,15 +97,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Hold(duration=0.2)"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Throw"",
-                    ""type"": ""Button"",
-                    ""id"": ""81330acf-068c-449b-9259-007ef4085d6c"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
                     ""initialStateCheck"": false
                 }
             ],
@@ -356,12 +356,12 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""a7f62dbf-c575-481c-90fc-fc7ea0f9fb5f"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": ""Hold"",
+                    ""id"": ""7cff1ab0-7ff7-4ffc-b3c8-8978e48a94f0"",
+                    ""path"": ""<Keyboard>/leftCtrl"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Throw"",
+                    ""action"": ""Crouch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -384,6 +384,28 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Crawl"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""401e19ba-b89f-4818-8dce-e8a1d487d54c"",
+                    ""path"": ""<Keyboard>/leftCtrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Crawl"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a7f62dbf-c575-481c-90fc-fc7ea0f9fb5f"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Throw"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -458,9 +480,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_FPS_Gameplay_Look = m_FPS_Gameplay.FindAction("Look", throwIfNotFound: true);
         m_FPS_Gameplay_Inspect = m_FPS_Gameplay.FindAction("Inspect", throwIfNotFound: true);
         m_FPS_Gameplay_Drop = m_FPS_Gameplay.FindAction("Drop", throwIfNotFound: true);
+        m_FPS_Gameplay_Throw = m_FPS_Gameplay.FindAction("Throw", throwIfNotFound: true);
         m_FPS_Gameplay_Crouch = m_FPS_Gameplay.FindAction("Crouch", throwIfNotFound: true);
         m_FPS_Gameplay_Crawl = m_FPS_Gameplay.FindAction("Crawl", throwIfNotFound: true);
-        m_FPS_Gameplay_Throw = m_FPS_Gameplay.FindAction("Throw", throwIfNotFound: true);
         // FPS_UI
         m_FPS_UI = asset.FindActionMap("FPS_UI", throwIfNotFound: true);
         m_FPS_UI_Escape = m_FPS_UI.FindAction("Escape", throwIfNotFound: true);
@@ -531,9 +553,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_FPS_Gameplay_Look;
     private readonly InputAction m_FPS_Gameplay_Inspect;
     private readonly InputAction m_FPS_Gameplay_Drop;
+    private readonly InputAction m_FPS_Gameplay_Throw;
     private readonly InputAction m_FPS_Gameplay_Crouch;
     private readonly InputAction m_FPS_Gameplay_Crawl;
-    private readonly InputAction m_FPS_Gameplay_Throw;
     public struct FPS_GameplayActions
     {
         private @PlayerInputs m_Wrapper;
@@ -543,9 +565,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_FPS_Gameplay_Look;
         public InputAction @Inspect => m_Wrapper.m_FPS_Gameplay_Inspect;
         public InputAction @Drop => m_Wrapper.m_FPS_Gameplay_Drop;
+        public InputAction @Throw => m_Wrapper.m_FPS_Gameplay_Throw;
         public InputAction @Crouch => m_Wrapper.m_FPS_Gameplay_Crouch;
         public InputAction @Crawl => m_Wrapper.m_FPS_Gameplay_Crawl;
-        public InputAction @Throw => m_Wrapper.m_FPS_Gameplay_Throw;
         public InputActionMap Get() { return m_Wrapper.m_FPS_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -570,15 +592,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Drop.started += instance.OnDrop;
             @Drop.performed += instance.OnDrop;
             @Drop.canceled += instance.OnDrop;
+            @Throw.started += instance.OnThrow;
+            @Throw.performed += instance.OnThrow;
+            @Throw.canceled += instance.OnThrow;
             @Crouch.started += instance.OnCrouch;
             @Crouch.performed += instance.OnCrouch;
             @Crouch.canceled += instance.OnCrouch;
             @Crawl.started += instance.OnCrawl;
             @Crawl.performed += instance.OnCrawl;
             @Crawl.canceled += instance.OnCrawl;
-            @Throw.started += instance.OnThrow;
-            @Throw.performed += instance.OnThrow;
-            @Throw.canceled += instance.OnThrow;
         }
 
         private void UnregisterCallbacks(IFPS_GameplayActions instance)
@@ -598,15 +620,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Drop.started -= instance.OnDrop;
             @Drop.performed -= instance.OnDrop;
             @Drop.canceled -= instance.OnDrop;
+            @Throw.started -= instance.OnThrow;
+            @Throw.performed -= instance.OnThrow;
+            @Throw.canceled -= instance.OnThrow;
             @Crouch.started -= instance.OnCrouch;
             @Crouch.performed -= instance.OnCrouch;
             @Crouch.canceled -= instance.OnCrouch;
             @Crawl.started -= instance.OnCrawl;
             @Crawl.performed -= instance.OnCrawl;
             @Crawl.canceled -= instance.OnCrawl;
-            @Throw.started -= instance.OnThrow;
-            @Throw.performed -= instance.OnThrow;
-            @Throw.canceled -= instance.OnThrow;
         }
 
         public void RemoveCallbacks(IFPS_GameplayActions instance)
@@ -685,9 +707,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnInspect(InputAction.CallbackContext context);
         void OnDrop(InputAction.CallbackContext context);
+        void OnThrow(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
         void OnCrawl(InputAction.CallbackContext context);
-        void OnThrow(InputAction.CallbackContext context);
     }
     public interface IFPS_UIActions
     {

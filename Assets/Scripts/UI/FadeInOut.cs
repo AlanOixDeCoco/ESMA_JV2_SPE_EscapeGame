@@ -10,6 +10,7 @@ public class FadeInOut : MonoBehaviour
     
     public IEnumerator FadeIn(float duration)
     {
+        _fadeImage.raycastTarget = true;
         _fadeImage.enabled = true;
         var startTime = Time.time;
         var endTime = startTime + duration;
@@ -38,6 +39,7 @@ public class FadeInOut : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         _fadeImage.enabled = false;
+        _fadeImage.raycastTarget = false;
 
         yield return new WaitForEndOfFrame();
     }

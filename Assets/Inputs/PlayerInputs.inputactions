@@ -51,6 +51,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Throw",
+                    "type": "Button",
+                    "id": "81330acf-068c-449b-9259-007ef4085d6c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Crouch",
                     "type": "Button",
                     "id": "f358a272-298f-4ef9-b8a9-fb83bd5ca6aa",
@@ -66,15 +75,6 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Hold(duration=0.2)",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Throw",
-                    "type": "Button",
-                    "id": "81330acf-068c-449b-9259-007ef4085d6c",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
                     "initialStateCheck": false
                 }
             ],
@@ -334,12 +334,12 @@
                 },
                 {
                     "name": "",
-                    "id": "a7f62dbf-c575-481c-90fc-fc7ea0f9fb5f",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "Hold",
+                    "id": "7cff1ab0-7ff7-4ffc-b3c8-8978e48a94f0",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Throw",
+                    "action": "Crouch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -362,6 +362,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Crawl",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "401e19ba-b89f-4818-8dce-e8a1d487d54c",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Crawl",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a7f62dbf-c575-481c-90fc-fc7ea0f9fb5f",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Throw",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

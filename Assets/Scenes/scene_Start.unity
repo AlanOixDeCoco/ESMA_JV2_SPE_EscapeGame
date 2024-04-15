@@ -991,11 +991,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 339631883927032735, guid: d6698fa3519d73243a2e70564669c7f9,
-        type: 3}
-      propertyPath: _gameDuration
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 3258707603279041962, guid: d6698fa3519d73243a2e70564669c7f9,
         type: 3}
       propertyPath: _musicSource

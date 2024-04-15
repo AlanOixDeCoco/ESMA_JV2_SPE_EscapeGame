@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioController : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class AudioController : MonoBehaviour
     {
         _musicSource.volume = 0f;
         _musicSource.Play();
-        StartCoroutine(FadeVolume(_musicSource, 1f, 2f));
+        StartCoroutine(FadeVolume(_musicSource, 1f, 1.5f));
     }
     public void PauseMusic()
     {
@@ -26,7 +27,7 @@ public class AudioController : MonoBehaviour
     }
     private IEnumerator PauseMusicCoroutine()
     {
-        yield return StartCoroutine(FadeVolume(_musicSource, 0f, 2f));
+        yield return StartCoroutine(FadeVolume(_musicSource, 0f, 1.5f));
         _musicSource.Pause();
     }
     
@@ -34,7 +35,7 @@ public class AudioController : MonoBehaviour
     {
         _ambiantSource.volume = 0f;
         _ambiantSource.Play();
-        StartCoroutine(FadeVolume(_ambiantSource, 1f, 2f));
+        StartCoroutine(FadeVolume(_ambiantSource, 1f, 1.5f));
     }
     public void PauseAmbiant()
     {
@@ -42,7 +43,7 @@ public class AudioController : MonoBehaviour
     }
     private IEnumerator PauseAmbiantCoroutine()
     {
-        yield return StartCoroutine(FadeVolume(_ambiantSource, 0f, 2f));
+        yield return StartCoroutine(FadeVolume(_ambiantSource, 0f, 1.5f));
         _ambiantSource.Pause();
     }
 

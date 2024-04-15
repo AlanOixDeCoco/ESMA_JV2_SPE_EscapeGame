@@ -71,5 +71,71 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9e6c8c665bb99fe499b4d45e83ce686d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2518814317512297243}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9e6c8c665bb99fe499b4d45e83ce686d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2567277966535774342}
   m_SourcePrefab: {fileID: 100100000, guid: 9e6c8c665bb99fe499b4d45e83ce686d, type: 3}
+--- !u!1 &7733970780442136814 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9e6c8c665bb99fe499b4d45e83ce686d,
+    type: 3}
+  m_PrefabInstance: {fileID: 7464149735176940991}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2518814317512297243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7733970780442136814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bf0c838fcfd8764ab7c3be092638e34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onCollisionEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2567277966535774342}
+        m_TargetAssemblyTypeName: AudioFeedback, Assembly-CSharp
+        m_MethodName: PlayCollisionFeedback
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &2567277966535774342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7733970780442136814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9524d93e7976deb4d88cd115b15d1f0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClips:
+  - {fileID: 8300000, guid: f5d4bd668ab00124a8906023467e8052, type: 3}
+  - {fileID: 8300000, guid: ef152ec7a6594a84abaa3fb8bd4dbe37, type: 3}
+  - {fileID: 8300000, guid: 477051f0574e2704f8941a831333f3d1, type: 3}
+  - {fileID: 8300000, guid: b2c272629ad826b429ec61f0a77391b7, type: 3}
+  _audioMixerGroup: {fileID: 3157411521193916321, guid: 5d9366fe65d98924899ecbf787fc5ed3,
+    type: 2}
+  _collisionStrenghtThreshold: 1
+  _collisionMaxStrenght: 2
+  _maxVolume: 1

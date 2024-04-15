@@ -25,8 +25,10 @@ public class GameController : MonoBehaviour
     [Header("Controllers references")]
     [SerializeField] private PlayerController _playerController;
     [SerializeField] private TimeController _timeController;
+    [SerializeField] private AudioController _audioController;
     public PlayerController PlayerController => _playerController;
     public TimeController TimeController => _timeController;
+    public AudioController AudioController => _audioController;
 
     #endregion
 
@@ -101,6 +103,8 @@ public class GameController : MonoBehaviour
         var loadSceneAsync = SceneManager.LoadSceneAsync(_mainMenuScene);
         
         yield return new WaitUntil(() => loadSceneAsync.isDone);
+        
+        AudioController.PauseAmbiant();
 
         yield return StartCoroutine(FadeOut());
     }
@@ -168,7 +172,7 @@ public class GameController : MonoBehaviour
         _levelsQueue.RemoveAt(0);
         
         yield return new WaitUntil(() => loadSceneAsync.isDone);
-
+        
         yield return StartCoroutine(FadeOut());
         
         _timeController.Resume();
@@ -180,11 +184,13 @@ public class GameController : MonoBehaviour
         
         _playerController.PlayerInputs.Disable();
 
+        AudioController.PauseAmbiant();
         yield return StartCoroutine(GameUI.FadeInOut.FadeIn(2f));
     }
     
     private IEnumerator FadeOut()
     {
+        AudioController.PlayAmbiant();
         yield return StartCoroutine(GameUI.FadeInOut.FadeOut(1f));
         
         _playerController.PlayerInputs.Enable();

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 339631883927032735}
   - component: {fileID: 4834515737802293791}
   - component: {fileID: 5534973708348792237}
+  - component: {fileID: 3258707603279041962}
   m_Layer: 0
   m_Name: === GAME CONTROLLER ===
   m_TagString: Untagged
@@ -48,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerController: {fileID: 4834515737802293791}
   _timeController: {fileID: 5534973708348792237}
+  _audioController: {fileID: 3258707603279041962}
   _mainMenuScene: scene_MainMenu
   _successGameOverScene: scene_GameOver_success
   _failGameOverScene: scene_GameOver_fail
@@ -72,7 +74,7 @@ MonoBehaviour:
   - _sceneName: scene_room_Mathieu_001
     _gameoverMagazineMaterial: {fileID: 2100000, guid: 9839a1c6cbc159144866b55ca8092e1f,
       type: 2}
-  _gameDuration: 0.1
+  _gameDuration: 25
 --- !u!114 &4834515737802293791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,3 +99,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d2f66832d9dda4db8fc3d81ddd77f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3258707603279041962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9187977054917140798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eb404b168d214e4bb3956358190077d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _musicSource: {fileID: 0}
+  _ambiantSource: {fileID: 0}

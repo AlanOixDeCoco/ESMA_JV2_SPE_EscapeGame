@@ -30,6 +30,9 @@ public class MainMenuUI : MonoBehaviour
         var loadSceneAsync = SceneManager.LoadSceneAsync(_transitionSceneIndex);
         yield return new WaitUntil(() => loadSceneAsync.isDone);
         
+        GameController.Instance.AudioController.PauseMusic();
+        GameController.Instance.AudioController.PlayAmbiant();
+        
         yield return GameController.Instance.StartCoroutine(GameController.Instance.GameUI.FadeInOut.FadeOut(.5f));
     }
 }

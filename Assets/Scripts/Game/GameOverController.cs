@@ -12,6 +12,8 @@ public class GameOverController : MonoBehaviour
     
     private void Start()
     {
+        GameController.Instance.AudioController.PlayMusic();
+        
         if(_failed) _magazineMeshRenderer.material = GameController.Instance.CurrentSceneAndGameoverMagazine._gameoverMagazineMaterial;
         
         GameController.Instance.PlayerController.PlayerInputs.Enable();

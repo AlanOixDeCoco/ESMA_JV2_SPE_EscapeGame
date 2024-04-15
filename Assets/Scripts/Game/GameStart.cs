@@ -11,5 +11,7 @@ public class GameStart : MonoBehaviour
     private void Start()
     {
         var sceneLoading = SceneManager.LoadSceneAsync(_mainMenuSceneIndex);
+        
+        GameController.Instance.AudioController.PlayMusic();
     }
 }

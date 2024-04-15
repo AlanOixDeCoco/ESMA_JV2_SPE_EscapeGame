@@ -49,13 +49,30 @@ MonoBehaviour:
   _playerController: {fileID: 4834515737802293791}
   _timeController: {fileID: 5534973708348792237}
   _mainMenuScene: scene_MainMenu
-  _introductionScene: scene_Introduction
-  _firstLevelScene: scene_room_FirstBox
+  _successGameOverScene: scene_GameOver_success
+  _failGameOverScene: scene_GameOver_fail
+  _firstLevelScene:
+    _sceneName: scene_room_intro_Pierre_001
+    _gameoverMagazineMaterial: {fileID: 2100000, guid: 8891cd0fe5e4cf54aa5bd7d09fdb8a76,
+      type: 2}
   _beginnerLevelsScenes:
-  - scene_room_Pierre_001
+  - _sceneName: scene_room_Solenn_001
+    _gameoverMagazineMaterial: {fileID: 2100000, guid: 7715e81bd2c34e647879d77a956b3f40,
+      type: 2}
+  - _sceneName: scene_room_Cesar_001
+    _gameoverMagazineMaterial: {fileID: 2100000, guid: a1b0293968b6c7040bd1cc96d40ac09e,
+      type: 2}
   _advancedLevelsScenes:
-  - scene_room_Pierre_001
-  _gameDuration: 10
+  - _sceneName: scene_room_Pierre_001
+    _gameoverMagazineMaterial: {fileID: 2100000, guid: c3a508fcc88d7e840812936dd19058de,
+      type: 2}
+  - _sceneName: scene_room_Alan_001
+    _gameoverMagazineMaterial: {fileID: 2100000, guid: 46ade1735f1da8d4caa9df128d7bcf3d,
+      type: 2}
+  - _sceneName: scene_room_Mathieu_001
+    _gameoverMagazineMaterial: {fileID: 2100000, guid: 9839a1c6cbc159144866b55ca8092e1f,
+      type: 2}
+  _gameDuration: 0.1
 --- !u!114 &4834515737802293791
 MonoBehaviour:
   m_ObjectHideFlags: 0

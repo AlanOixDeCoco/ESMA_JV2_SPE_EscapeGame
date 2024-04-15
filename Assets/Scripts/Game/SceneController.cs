@@ -40,13 +40,14 @@ public class SceneController : MonoBehaviour
         }
     }
 
-    public void OnLevelFail()
+    public void OnLevelFail(bool gameover = false)
     {
         if (!_hasEnded)
         {
             _hasEnded = true;
             _onFail.Invoke();
-            GameController.Instance.StartCoroutine(GameController.Instance.OnLevelFail());
+            if(gameover) GameController.Instance.StartCoroutine(GameController.Instance.Gameover(false));
+            else GameController.Instance.StartCoroutine(GameController.Instance.OnLevelFail());
         }
     }
 }

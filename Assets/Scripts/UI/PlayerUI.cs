@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -30,6 +31,20 @@ public class PlayerUI : MonoBehaviour
 
     [Header("Time")] 
     [SerializeField] private TextMeshProUGUI _timeText;
+    
+    [Header("Helper UI")]
+    [SerializeField] private RectTransform[] _helperUIs;
+    
+    private void Start()
+    {
+        HideUIHelper();
+        GameController.Instance.PlayerController.PlayerInputs.FPS_UI.Escape.performed += ToggleUIHelper;
+    }
+
+    private void OnDisable()
+    {
+        GameController.Instance.PlayerController.PlayerInputs.FPS_UI.Escape.performed -= ToggleUIHelper;
+    }
 
     private void Update()
     {
@@ -51,5 +66,21 @@ public class PlayerUI : MonoBehaviour
         var minutes = (int)((remainingTime - seconds) / 60);
 
         _timeText.text = $"{minutes:00}:{seconds:00}";
+    }
+    
+    private void HideUIHelper()
+    {
+        foreach (var ui in _helperUIs)
+        {
+            ui.gameObject.SetActive(false);
+        }
+    }
+    
+    private void ToggleUIHelper(InputAction.CallbackContext callbackContext)
+    {
+        foreach (var ui in _helperUIs)
+        {
+            ui.gameObject.SetActive(!ui.gameObject.activeSelf);
+        }
     }
 }

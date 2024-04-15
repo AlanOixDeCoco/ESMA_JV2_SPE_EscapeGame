@@ -8482,6 +8482,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: staticMesh_prop_Textured_Radio
       objectReference: {fileID: 0}
+    - target: {fileID: 3317492540958805564, guid: 430a29e9b61d3c34f8ad319a644759a1,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -20,8 +20,7 @@ public class TimeController : MonoBehaviour
         if (GetRemainingTime() <= 0)
         {
             _isActive = false;
-            GameController.Instance.ActiveSceneController.OnLevelFail();
-            GameController.Instance.StartCoroutine(GameController.Instance.Gameover(false));
+            GameController.Instance.ActiveSceneController.OnLevelFail(true);
         }
     }
 

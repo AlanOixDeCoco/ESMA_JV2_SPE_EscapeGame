@@ -3708,7 +3708,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '- Solenn Catin'
+  m_text: '- Solenn Cattin'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 099f32fadcc6ccc4f9f3983a84f97f5c, type: 2}
   m_sharedMaterial: {fileID: -633561324588058133, guid: 099f32fadcc6ccc4f9f3983a84f97f5c,
@@ -6280,7 +6280,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '- Solenn Catin'
+  m_text: '- Solenn Cattin'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 099f32fadcc6ccc4f9f3983a84f97f5c, type: 2}
   m_sharedMaterial: {fileID: -633561324588058133, guid: 099f32fadcc6ccc4f9f3983a84f97f5c,
@@ -9862,7 +9862,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '- Solenn Catin'
+  m_text: '- Solenn Cattin'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 099f32fadcc6ccc4f9f3983a84f97f5c, type: 2}
   m_sharedMaterial: {fileID: -633561324588058133, guid: 099f32fadcc6ccc4f9f3983a84f97f5c,

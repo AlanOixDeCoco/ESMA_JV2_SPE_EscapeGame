@@ -1931,7 +1931,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 5302568919011541938, guid: e40a2aeb042267f4e84ca2df16000f77, type: 3}
 --- !u!114 &339019316
@@ -2585,7 +2585,7 @@ PrefabInstance:
     - target: {fileID: 610752010934115924, guid: 4fa65e0e0f1b22e4cad2fa824f370078,
         type: 3}
       propertyPath: _onEventTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 610752010934115924, guid: 4fa65e0e0f1b22e4cad2fa824f370078,
         type: 3}
@@ -15566,7 +15566,7 @@ PrefabInstance:
     - target: {fileID: 610752010934115924, guid: 4fa65e0e0f1b22e4cad2fa824f370078,
         type: 3}
       propertyPath: _onEventTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 610752010934115924, guid: 4fa65e0e0f1b22e4cad2fa824f370078,
         type: 3}
@@ -18935,34 +18935,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46a62debeccdba644af38a1c56095c90, type: 3}
---- !u!1 &1920751751 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7019354829967624571, guid: d1891e456c31ea9418f0b62988fca5c0,
-    type: 3}
-  m_PrefabInstance: {fileID: 6072945183024940571}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &1920751753
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1920751751}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1001 &1943812728
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20229,7 +20201,7 @@ PrefabInstance:
     - target: {fileID: 610752010934115924, guid: 4fa65e0e0f1b22e4cad2fa824f370078,
         type: 3}
       propertyPath: _onEventTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 610752010934115924, guid: 4fa65e0e0f1b22e4cad2fa824f370078,
         type: 3}
@@ -21096,10 +21068,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7019354829967624571, guid: d1891e456c31ea9418f0b62988fca5c0,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1920751753}
     - targetCorrespondingSourceObject: {fileID: 6768305304090462946, guid: d1891e456c31ea9418f0b62988fca5c0,
         type: 3}
       insertIndex: -1
